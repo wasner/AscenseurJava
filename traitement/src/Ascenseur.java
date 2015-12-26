@@ -1,6 +1,5 @@
 package ascenseur.traitement;
 
-
 import java.util.*;
 
 /**
@@ -18,7 +17,12 @@ public class Ascenseur {
     private int nbEtagesDeservis;
     private int nbPersonneMax;
     private Etage etageCourant;
-    private int poidMax;
+    
+    public Etage getEtageCourant() {
+		return etageCourant;
+	}
+
+	private int poidMax;
     private String etat;   					//immobileFerme, immobileOuvert, montant, descendant
     private boolean bloquer;
     
@@ -50,35 +54,40 @@ public class Ascenseur {
     
     
     public void testEtatSuivantImmoFerme(){
-    	if((requetes.size()==0) || ((requetes.element()).getEtageAsc())!=etageCourant ){
+    	if((requetes.size()==0) || ((requetes.element()).getEtageDestination())!=etageCourant ){
 			etat="immobileFerme";
     	}
     }
     
     
     public void testEtatSuivantImmoOuvert(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageAsc())==etageCourant ){
+    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination())==etageCourant ){
     		etat="immobileOuvert";
     	}
     }
     
     
     public void testEtatSuivantMontant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageAsc())>etageCourant  ){
+    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination()).compareTo(etageCourant)  ){
     		etat="montant";
     	}
     }
     
     
     public void testEtatSuivantDescendant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageAsc())<etageCourant  ){
+    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination()).compareTo
+    			etageCourant  ){
     		etat="descendant";
     	}
     }
     
     
 
-    public void action() {
+    public LinkedList<Requete> getRequetes() {
+		return requetes;
+	}
+
+	public void action() {
         // TODO implement here
     }
 
