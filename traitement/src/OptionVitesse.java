@@ -1,16 +1,14 @@
-package ascenseur.traitement;
 import java.util.*;
 
 /**
  * 
  */
-public class Option {
+public class OptionVitesse extends Option {
 
     /**
      * Default constructor
      */
-    public Option() {
+    public OptionVitesse() {
     }
-
 
 }
