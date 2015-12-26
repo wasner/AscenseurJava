@@ -6,7 +6,14 @@ import java.util.*;
  */
 public class Requete {
 	
-    public Requete() {
+	private Etage etageDestination;
+	
+    public Etage getEtageDestination() {
+		return etageDestination;
+	}
+
+	public Requete(Etage etage) {
+    	etageDestination=etage;
     }
 
 }
