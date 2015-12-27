@@ -1,3 +1,4 @@
+package ascenseur.traitement;
 import java.util.*;
 
 /**
@@ -5,9 +6,9 @@ import java.util.*;
  */
 public class Etage {
 
-    public Etage(String nomE) {
-    	nom=nomE;
+    public Etage(int numE) {
+    	numEtage=numE;
     }
 
-    private String nom;
+    private int numEtage;
 }
