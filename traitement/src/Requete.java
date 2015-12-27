@@ -12,6 +12,5 @@ public abstract class Requete
 	public static int annuler; //La dernière commande envoyé à été annuler /!\ BONUS
 
 	public Requete() {
-
 	}
 }
