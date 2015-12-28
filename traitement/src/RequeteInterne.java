@@ -1,3 +1,4 @@
+package ascenseur.traitement;
 import java.util.*;
 
 /**
@@ -5,12 +6,15 @@ import java.util.*;
  */
 public class RequeteInterne extends Requete {
 
-    /**
-     * Default constructor
-     */
-    public RequeteInterne() {
-        super();
+    private Etage etageF;
+    public RequeteInterne(Etage etage) {
+        etageF=etage;
     }
+	public Etage getEtageF() {
+		return etageF;
+	}
+    
+    
 
 
 }
