@@ -48,10 +48,7 @@ public class Ascenseur {
     public void creerRequeteInterne(Etage etage) {
     	RequeteInterne requete = new RequeteInterne(etage);
         ajouterRequete(requete);
-    }
-     
-    
-    
+    }    
     
     public void testEtatSuivantImmoFerme(){
     	if((requetes.size()==0) || ((requetes.element()).getEtageDestination())!=etageCourant ){
@@ -87,11 +84,12 @@ public class Ascenseur {
 		return requetes;
 	}
 
-	public void action() {
+	public String action() {
         testEtatSuivantImmoOuvert();
         testEtatSuivantImmoFerme();
         testEtatSuivantDescendant();
         testEtatSuivantMontant();
+        return etat;
     }
 
 }
