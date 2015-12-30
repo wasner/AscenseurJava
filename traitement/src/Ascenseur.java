@@ -30,7 +30,7 @@ public class Ascenseur {
     private Etage etages[];					//liste des etages deservis. (exemple: 1,2,3,6,8,9)
     private Option options[];
     
-    LinkedList<RequeteInterne> requetes=new LinkedList<RequeteInterne>();
+    LinkedList<Requete> requetes=new LinkedList<Requete>();
 
     
     public void bloquer() {
@@ -41,7 +41,7 @@ public class Ascenseur {
         bloquer=false;
     }
 
-    public void ajouterRequete(RequeteInterne requete) {
+    public void ajouterRequete(Requete requete) {
         requetes.add(requete);
     }
 
@@ -51,38 +51,32 @@ public class Ascenseur {
     }    
     
     public void testEtatSuivantImmoFerme(){
-    	if((requetes.size()==0) || ((requetes.element()).getEtageDestination())!=etageCourant ){
+    	if((requetes.size()==0) || ((requetes.element()).getRequeteEtage())!=etageCourant ){
 			etat="immobileFerme";
     	}
     }
     
     
     public void testEtatSuivantImmoOuvert(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination())==etageCourant ){
+    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage())==etageCourant ){
     		etat="immobileOuvert";
     	}
     }
     
     
     public void testEtatSuivantMontant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination()).compareTo(etageCourant)){
+    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage()).compareTo(etageCourant)){
     		etat="montant";
     	}
     }
     
     
     public void testEtatSuivantDescendant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getEtageDestination()).compareTo(
+    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage()).compareTo(
     			etageCourant)){
     		etat="descendant";
     	}
     }
-    
-    
-
-    public LinkedList<RequeteInterne> getRequetes() {
-		return requetes;
-	}
 
 	public String action() {
         testEtatSuivantImmoOuvert();
