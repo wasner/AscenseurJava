@@ -1,3 +1,5 @@
+package ascenseur.traitement;
+
 import java.util.*;
 
 /**
@@ -15,6 +17,10 @@ public class Constante {
      * 
      */
     private static int nbAscenseur;
+
+    public static int getNbEtage() {
+        return nbEtage;
+    }
 
     /**
      * 

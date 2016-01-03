@@ -1,3 +1,5 @@
+package ascenseur.traitement;
+
 import java.util.*;
 import java.util.function.BooleanSupplier;
 
@@ -6,23 +8,14 @@ import java.util.function.BooleanSupplier;
  */
 public class RequeteExterne extends Requete {
 
+    private boolean direction;
     /** Etage de l'appel */
-    private int etage;
-    /** Direction de l'appel */
-    private String direction;
+    private Etage etage;
 
-    /**
-     * Default constructor
-     */
-    public RequeteExterne() {
-    }
 
-    /**
-     * 
-     */
-    public String getDirection() {
-    	return direction;
-        // TODO implement here
+    public RequeteExterne(boolean direction, Etage etage) {
+        this.direction = direction;
+        this.etage = etage;
     }
 
     /**
@@ -30,7 +23,7 @@ public class RequeteExterne extends Requete {
      *
      * @return       Etage de l'appel
      */
-    public int getEtage()
+    public Etage getEtage()
     {
         return etage;
     }
@@ -45,4 +38,13 @@ public class RequeteExterne extends Requete {
         etage = etage;
     }
 
+    public boolean getDirection() {
+        return direction;
+    }
+
+    public void setDirection(boolean direction) {
+        this.direction = direction;
+    }
+
 }
+

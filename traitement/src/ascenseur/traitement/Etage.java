@@ -10,5 +10,10 @@ public class Etage {
     	numEtage=numE;
     }
 
+
     private int numEtage;
+
+    public boolean compareTo(Etage etageCourant) {
+        return false;
+    }
 }

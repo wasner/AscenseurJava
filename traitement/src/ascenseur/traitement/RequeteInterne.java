@@ -13,8 +13,4 @@ public class RequeteInterne extends Requete {
 	public Etage getEtageDestination() {
 		return etageDestination;
 	}
-	
-    
-
-
 }
