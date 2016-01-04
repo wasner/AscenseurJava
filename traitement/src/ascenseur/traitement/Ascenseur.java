@@ -24,7 +24,11 @@ public class Ascenseur {
 
 	private int poidMax;
     private String etat;   					//immobileFerme, immobileOuvert, montant, descendant
-    private boolean bloquer;
+    public String getEtat() {
+		return etat;
+	}
+
+	private boolean bloquer=false;
     
     private Utilisateur utilisateurs[];
     private Etage etages[];					//liste des etages deservis. (exemple: 1,2,3,6,8,9)
@@ -50,39 +54,54 @@ public class Ascenseur {
         ajouterRequete(requete);
     }    
     
-    public void testEtatSuivantImmoFerme(){
-    	if((requetes.size()==0) || ((requetes.element()).getRequeteEtage())!=etageCourant ){
+    public boolean testEtatSuivantImmoFerme(){
+    	if((requetes.size()==0) || (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
+			return true;
     	}
+    	return false;
     }
     
     
-    public void testEtatSuivantImmoOuvert(){
-    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage())==etageCourant ){
+    public boolean testEtatSuivantImmoOuvert(){
+    	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
+    		for(int i=0;i<requetes.size();++i){
+    			if((requetes.get(i).getRequeteEtage()).compareEtage(etageCourant)==0){
+    				requetes.remove(i);
+    			}
+    		}
+    		return true;
     	}
+    	return false;
     }
     
     
-    public void testEtatSuivantMontant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage()).compareTo(etageCourant)){
+    public boolean testEtatSuivantMontant(){
+    	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
+    		return true;
     	}
+    	return false;
     }
     
     
-    public void testEtatSuivantDescendant(){
-    	if((requetes.size()!=0) && ((requetes.element()).getRequeteEtage()).compareTo(
-    			etageCourant)){
+    public boolean testEtatSuivantDescendant(){
+    	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(
+    			etageCourant))==-1){
     		etat="descendant";
+    		return true;
     	}
+    	return false;
     }
 
 	public String action() {
-        testEtatSuivantImmoOuvert();
-        testEtatSuivantImmoFerme();
-        testEtatSuivantDescendant();
-        testEtatSuivantMontant();
+		if (bloquer==false){
+	        if(testEtatSuivantImmoOuvert()){}
+	        else if (testEtatSuivantImmoFerme()){}
+	        else if(testEtatSuivantDescendant()){}
+	        else if(testEtatSuivantMontant()){}
+		}
         return etat;
     }
 
