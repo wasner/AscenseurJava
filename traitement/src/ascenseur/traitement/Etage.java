@@ -11,9 +11,14 @@ public class Etage {
     }
 
 
-    private int numEtage;
+    private Integer numEtage;
 
-    public boolean compareTo(Etage etageCourant) {
-        return false;
+    public Integer getNumEtage() {
+		return numEtage;
+	}
+
+	public int compareEtage(Etage etageCourant) {
+    	return numEtage.compareTo(etageCourant.getNumEtage());
+        
     }
 }
