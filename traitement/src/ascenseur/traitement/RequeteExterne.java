@@ -33,10 +33,11 @@ public class RequeteExterne extends Requete {
      *
      * @param etage          Etage de l'appel
      */
-    public void RequeteDescendre(int etage)
+    public void RequeteDescendre(Etage etage)
     {
         etage = etage;
     }
+    public void RequeteMonter(Etage etage) { etage = etage;}
 
     public boolean getDirection() {
         return direction;

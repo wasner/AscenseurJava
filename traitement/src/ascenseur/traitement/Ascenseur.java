@@ -2,8 +2,9 @@ package ascenseur.traitement;
 
 import java.util.*;
 
+
 /**
- * 
+ *
  */
 public class Ascenseur {
 
@@ -103,6 +104,33 @@ public class Ascenseur {
 	        else if(testEtatSuivantMontant()){}
 		}
         return etat;
+    }
+
+    public void triAppel() {
+        //Fonction triant les appels en attente
+        //remplissage d'un tableau avec les destinations des appels
+        Iterator it=requetes.iterator();
+
+        while(it.hasNext())//Parcours de la liste contenant les requêtes
+        {
+            Object o = it.next();
+            this.requetes.add(Requete.getRequeteEtage());
+            if(RequeteExterne.getEtage() != this.getEtageCourant()) //Si l'étage ou se trouve l'ascenceur n'est pas l'étage ou il y a une requête
+                this.requetes.add(RequeteExterne.getEtage());//On ajoute l'étage ou il y a une requête dans la file d'attente
+        }
+
+
+        //Algorithme de tri du precedent tableau
+        //Si on monte
+        if(this.etat == "montant") {
+            Collections.sort(this.requetes,null); //On trie les requêtes dans l'ordre croissant (c'est à dire que les requêtes provenant d'étage les plus proches de l'ascenceur vont arrivé en première)
+        }
+        else{ //Si on descend
+            // create comparator for reverse order
+            Comparator cmp = Collections.reverseOrder();
+            Collections.sort(requetes,cmp); //On trie les requêtes dans l'ordre décroissant (cad que les requêtes provenant des étages les plus proches seront en premier)
+        }
+
     }
 
 }
