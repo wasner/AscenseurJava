@@ -1,20 +1,17 @@
-package ascenseur.traitement;
+package traitement;
 import java.util.*;
 
 /**
  * 
  */
-public abstract class Requete
+public interface Requete
 {
-	Etage requeteEtage;
+
 	
 
-	public Etage getRequeteEtage() {
-		return requeteEtage;
-	}
+	public Etage getRequeteEtage();
 
 
-	public Requete() {
-	}
 
-	}
+
+}
