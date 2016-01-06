@@ -1,19 +1,18 @@
-package ascenseur.traitement;
+package traitement;
 
 import java.util.*;
-import java.util.function.BooleanSupplier;
 
 /**
  * 
  */
-public class RequeteExterne extends Requete {
+public class RequeteExterne implements Requete {
 
-    private boolean direction;
+    private String direction;
     /** Etage de l'appel */
     private Etage etage;
 
 
-    public RequeteExterne(boolean direction, Etage etage) {
+    public RequeteExterne(String direction, Etage etage) {
         this.direction = direction;
         this.etage = etage;
     }
@@ -39,13 +38,19 @@ public class RequeteExterne extends Requete {
     }
     public void RequeteMonter(Etage etage) { etage = etage;}
 
-    public boolean getDirection() {
+    public String getDirection() {
         return direction;
     }
 
-    public void setDirection(boolean direction) {
+    public void setDirection(String direction) {
         this.direction = direction;
     }
+
+	@Override
+	public Etage getRequeteEtage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 
