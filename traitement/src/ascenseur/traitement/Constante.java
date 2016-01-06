@@ -1,11 +1,11 @@
-package ascenseur.traitement;
+package traitement;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Constante {
+public abstract class Constante {
 
     /**
      * Default constructor
