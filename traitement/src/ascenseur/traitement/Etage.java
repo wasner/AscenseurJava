@@ -1,4 +1,4 @@
-package ascenseur.traitement;
+package traitement;
 import java.util.*;
 
 /**
