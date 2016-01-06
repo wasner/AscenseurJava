@@ -1,17 +1,12 @@
-package ascenseur.traitement;
+package traitement;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Option {
+public interface Option {
 
-    /**
-     * Default constructor
-     */
-    public Option() {
-    }
 
 
 }
