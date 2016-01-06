@@ -49,16 +49,17 @@ public class Controleur {
     			if(r.getDirection()==a.getEtat()){
     				for (Etage e : a.getEtages()){
     					if (etagesEgaux(e, r.getEtage())){
-    						if(r.getDirection()=="Dessend" && etageUnPlusPetit(r.getEtage(),a.getEtageCourant()){
+    						if(r.getDirection()=="descendant" && etageUnPlusPetit(r.getEtage(),a.getEtageCourant())){
     							ascenceurChoisie=a;
     						}
-    						else if (r.getDirection()=="Monter" && r.getEtage().compareTo(a.getEtageCourant())>0){
+    						else if (r.getDirection()=="montant" && etageUnPlusGrand(r.getEtage(),a.getEtageCourant())){
     							ascenceurChoisie=a;
     						}
+    						break;
     					}
     				}
     			}
-    			else if (ascenceurChoisie==null && a.getEtat()=="Immobile Fermer"){
+    			else if (ascenceurChoisie==null && a.getEtat()=="immobileFerme"){
     				ascenceurChoisie=a;
     			}
     		}
@@ -67,14 +68,14 @@ public class Controleur {
     }
     private boolean etagesEgaux(Etage e1, Etage e2){
 		
-    	return e1.compareTo(e2)==0;
+    	return e1.compareEtage(e2)==0;
     	
     }
     private boolean etageUnPlusPetit(Etage e1, Etage e2){
-    	return e1.compareTo(e2)<0;
+    	return e1.compareEtage(e2)<0;
     }
     private boolean etageUnPlusGrand(Etage e1, Etage e2){
-    	return e1.compareTo(e2)>0;
+    	return e1.compareEtage(e2)>0;
     }
 
 }
