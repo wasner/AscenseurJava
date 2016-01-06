@@ -11,8 +11,8 @@ public class Controleur {
      */
     public Controleur(int nbAscenseur, int nbEtage) {
     	this.ascenseurs=new Ascenseur[nbAscenseur];
-    	Constante.setNbAscenseur(nbAscenseur);
-    	Constante.setNbEtage(nbEtage);
+    	//Constante.setNbAscenseur(nbAscenseur);
+    	//Constante.setNbEtage(nbEtage);
     	this.requetes= new Vector<RequeteExterne>();
     }
 
@@ -33,9 +33,9 @@ public class Controleur {
      * @param int etage 
      * @param String direction
      */
-    public void creerRequeteExterne(int etage, String direction) {
+    public void creerRequeteExterne(Etage etage, String direction) {
         // TODO implement here
-    	this.requetes.add(new RequeteExterne(etage, direction));
+    	this.requetes.add(new RequeteExterne( direction, etage));
     }
 
     /**
