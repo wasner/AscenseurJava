@@ -115,16 +115,15 @@ public class Ascenseur {
             }
                 return 0;
         }
-    });
+    };
+
     public void triAppel() {
         //Fonction triant les appels en attente
         //remplissage d'un tableau avec les destinations des appels
         for(Requete re : this.requetes)
             //this.requetes.add(Requete.getRequeteEtage());
             if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
-                this.requetes.add(RequeteExterne.getEtage());//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
-        }
-
+                this.requetes.add(re);//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
 
         //Algorithme de tri du precedent tableau
         //Si on monte
