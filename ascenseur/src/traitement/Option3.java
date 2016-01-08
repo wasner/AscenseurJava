@@ -3,7 +3,7 @@ package traitement;
 /**
  * 
  */
-public class Option3 extends Option {
+public class Option3 implements Option {
 
     /**
      * Default constructor

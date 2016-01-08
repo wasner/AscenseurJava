@@ -135,7 +135,5 @@ public class Ascenseur {
             Comparator cmp = Collections.reverseOrder();
             Collections.sort(requetes,cmp); //On trie les requ�tes dans l'ordre d�croissant (cad que les requ�tes provenant des �tages les plus proches seront en premier)
         }
-
     }
-
 }
