@@ -106,16 +106,22 @@ public class Ascenseur {
         return etat;
     }
 
+    private Comparator<Requete> comp1 = new Comparator<Requete>() {
+        @Override
+        public int compare(Requete requete, Requete t1) {
+            if(getEtat() == "montant" ){
+                if(requete.getRequeteEtage().getNumEtage()<t1.getRequeteEtage().getNumEtage())
+                    return -1;
+            }
+                return 0;
+        }
+    });
     public void triAppel() {
         //Fonction triant les appels en attente
         //remplissage d'un tableau avec les destinations des appels
-        Iterator it=requetes.iterator();
-
-        while(it.hasNext())//Parcours de la liste contenant les requ�tes
-        {
-            Object o = it.next();
-            this.requetes.add(Requete.getRequeteEtage());
-            if(RequeteExterne.getEtage() != this.getEtageCourant()) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
+        for(Requete re : this.requetes)
+            //this.requetes.add(Requete.getRequeteEtage());
+            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
                 this.requetes.add(RequeteExterne.getEtage());//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
         }
 
@@ -123,7 +129,7 @@ public class Ascenseur {
         //Algorithme de tri du precedent tableau
         //Si on monte
         if(this.etat == "montant") {
-            Collections.sort(this.requetes,null); //On trie les requ�tes dans l'ordre croissant (c'est � dire que les requ�tes provenant d'�tage les plus proches de l'ascenceur vont arriv� en premi�re)
+            Collections.sort(this.requetes,comp1); //On trie les requ�tes dans l'ordre croissant (c'est � dire que les requ�tes provenant d'�tage les plus proches de l'ascenceur vont arriv� en premi�re)
         }
         else{ //Si on descend
             // create comparator for reverse order
