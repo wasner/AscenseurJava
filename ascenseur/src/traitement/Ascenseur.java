@@ -1,4 +1,4 @@
-package ascenseur.traitement;
+package traitement;
 
 import java.util.*;
 
@@ -111,24 +111,24 @@ public class Ascenseur {
         //remplissage d'un tableau avec les destinations des appels
         Iterator it=requetes.iterator();
 
-        while(it.hasNext())//Parcours de la liste contenant les requêtes
+        while(it.hasNext())//Parcours de la liste contenant les requï¿½tes
         {
             Object o = it.next();
             this.requetes.add(Requete.getRequeteEtage());
-            if(RequeteExterne.getEtage() != this.getEtageCourant()) //Si l'étage ou se trouve l'ascenceur n'est pas l'étage ou il y a une requête
-                this.requetes.add(RequeteExterne.getEtage());//On ajoute l'étage ou il y a une requête dans la file d'attente
+            if(RequeteExterne.getEtage() != this.getEtageCourant()) //Si l'ï¿½tage ou se trouve l'ascenceur n'est pas l'ï¿½tage ou il y a une requï¿½te
+                this.requetes.add(RequeteExterne.getEtage());//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
         }
 
 
         //Algorithme de tri du precedent tableau
         //Si on monte
         if(this.etat == "montant") {
-            Collections.sort(this.requetes,null); //On trie les requêtes dans l'ordre croissant (c'est à dire que les requêtes provenant d'étage les plus proches de l'ascenceur vont arrivé en première)
+            Collections.sort(this.requetes,null); //On trie les requï¿½tes dans l'ordre croissant (c'est ï¿½ dire que les requï¿½tes provenant d'ï¿½tage les plus proches de l'ascenceur vont arrivï¿½ en premiï¿½re)
         }
         else{ //Si on descend
             // create comparator for reverse order
             Comparator cmp = Collections.reverseOrder();
-            Collections.sort(requetes,cmp); //On trie les requêtes dans l'ordre décroissant (cad que les requêtes provenant des étages les plus proches seront en premier)
+            Collections.sort(requetes,cmp); //On trie les requï¿½tes dans l'ordre dï¿½croissant (cad que les requï¿½tes provenant des ï¿½tages les plus proches seront en premier)
         }
 
     }
