@@ -1,16 +1,18 @@
-package traitement;
+package ascenceur.traitement;
+
 import java.util.*;
 
-/**
- * 
- */
-public class RequeteInterne extends Requete {
+public class RequeteInterne implements Requete {
 
     private Etage etageDestination;
+    
     public RequeteInterne(Etage etage) {
     	etageDestination=etage;
     }
-	public Etage getEtageDestination() {
+    
+	@Override
+	public Etage getRequeteEtage() {
+		// TODO Auto-generated method stub
 		return etageDestination;
 	}
 }
