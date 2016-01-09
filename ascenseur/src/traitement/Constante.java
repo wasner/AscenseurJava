@@ -1,7 +1,5 @@
 package ascenceur.traitement;
 
-import java.util.*;
-
 public abstract class Constante {
 
     private static final int nbAscenceurMax = 10;
