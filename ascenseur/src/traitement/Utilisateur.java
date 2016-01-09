@@ -1,4 +1,4 @@
-package traitement;
+package ascenceur.traitement;
 
 import java.util.*;
 
