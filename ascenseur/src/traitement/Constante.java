@@ -1,31 +1,17 @@
-package traitement;
+package ascenceur.traitement;
 
 import java.util.*;
 
-/**
- * 
- */
 public abstract class Constante {
 
-    /**
-     * Default constructor
-     */
-    public Constante() {
-    }
+    private static final int nbAscenceurMax = 10;
+    private static final int nbEtage = 20;
 
-    /**
-     * 
-     */
-    private static int nbAscenseur;
-
-    public static int getNbEtage() {
+    public static final int getNbEtage() {
         return nbEtage;
     }
 
-    /**
-     * 
-     */
-    private static int nbEtage;
-
-
+    public static final int getNbAscenceur() {
+        return nbAscenceurMax;
+    }
 }
