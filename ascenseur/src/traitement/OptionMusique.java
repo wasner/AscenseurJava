@@ -1,13 +1,7 @@
-package traitement;
+package ascenceur.traitement;
 
-/**
- * 
- */
-public class OptionMusique extends Option {
+public class OptionMusique implements Option {
 
-    /**
-     * Default constructor
-     */
     public OptionMusique() {
     }
 
