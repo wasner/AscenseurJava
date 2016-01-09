@@ -1,13 +1,7 @@
-package traitement;
+package ascenceur.traitement;
 
-/**
- * 
- */
-public class OptionVitesse extends Option {
+public class OptionVitesse implements Option {
 
-    /**
-     * Default constructor
-     */
     public OptionVitesse() {
     }
 
