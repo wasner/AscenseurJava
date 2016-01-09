@@ -1,4 +1,4 @@
-package traitement;
+package ascenseur.traitement;
 
 import java.util.*;
 
@@ -106,34 +106,34 @@ public class Ascenseur {
         return etat;
     }
 
-    private Comparator<Requete> comp1 = new Comparator<Requete>() {
-        @Override
-        public int compare(Requete requete, Requete t1) {
-            if(getEtat() == "montant" ){
-                if(requete.getRequeteEtage().getNumEtage()<t1.getRequeteEtage().getNumEtage())
-                    return -1;
-            }
-                return 0;
-        }
-    };
+	 private Comparator<Requete> comp1 = new Comparator<Requete>() {
+	        @Override
+	        public int compare(Requete requete, Requete t1) {
+	            if(getEtat() == "montant" ){
+	                if(requete.getRequeteEtage().getNumEtage()<t1.getRequeteEtage().getNumEtage())
+	                    return -1;
+	            }
+	                return 0;
+	        }
+	    };
 
-    public void triAppel() {
-        //Fonction triant les appels en attente
-        //remplissage d'un tableau avec les destinations des appels
-        for(Requete re : this.requetes)
-            //this.requetes.add(Requete.getRequeteEtage());
-            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
-                this.requetes.add(re);//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
+	    public void triAppel() {
+	        //Fonction triant les appels en attente
+	        //remplissage d'un tableau avec les destinations des appels
+	        for(Requete re : this.requetes)
+	            //this.requetes.add(Requete.getRequeteEtage());
+	            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
+	                this.requetes.add(re);//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
 
-        //Algorithme de tri du precedent tableau
-        //Si on monte
-        if(this.etat == "montant") {
-            Collections.sort(this.requetes,comp1); //On trie les requ�tes dans l'ordre croissant (c'est � dire que les requ�tes provenant d'�tage les plus proches de l'ascenceur vont arriv� en premi�re)
-        }
-        else{ //Si on descend
-            // create comparator for reverse order
-            Comparator cmp = Collections.reverseOrder();
-            Collections.sort(requetes,cmp); //On trie les requ�tes dans l'ordre d�croissant (cad que les requ�tes provenant des �tages les plus proches seront en premier)
-        }
-    }
+	        //Algorithme de tri du precedent tableau
+	        //Si on monte
+	        if(this.etat == "montant") {
+	            Collections.sort(this.requetes,comp1); //On trie les requ�tes dans l'ordre croissant (c'est � dire que les requ�tes provenant d'�tage les plus proches de l'ascenceur vont arriv� en premi�re)
+	        }
+	        else{ //Si on descend
+	            // create comparator for reverse order
+	            Comparator cmp = Collections.reverseOrder();
+	            Collections.sort(requetes,cmp); //On trie les requ�tes dans l'ordre d�croissant (cad que les requ�tes provenant des �tages les plus proches seront en premier)
+	        }
+	    }
 }
