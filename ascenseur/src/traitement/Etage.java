@@ -1,16 +1,12 @@
-package traitement;
+package ascenceur.traitement;
 
-/**
- * 
- */
 public class Etage {
 
+	private Integer numEtage;
+	
     public Etage(int numE) {
     	numEtage=numE;
     }
-
-
-    private Integer numEtage;
 
     public Integer getNumEtage() {
 		return numEtage;
@@ -18,6 +14,5 @@ public class Etage {
 
 	public int compareEtage(Etage etageCourant) {
     	return numEtage.compareTo(etageCourant.getNumEtage());
-        
     }
 }
