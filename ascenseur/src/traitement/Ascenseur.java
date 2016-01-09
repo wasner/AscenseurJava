@@ -1,13 +1,24 @@
-package ascenseur.traitement;
+package ascenceur.traitement;
 
 import java.util.*;
 
-
-/**
- *
- */
 public class Ascenseur {
 
+	private int nbEtagesDeservis;
+    private int nbPersonneMax;
+    private Etage etageCourant;
+    
+	private int poidMax;
+    private String etat; 					//immobileFerme, immobileOuvert, montant, descendant
+	
+    private boolean bloquer=false;
+    
+    private Utilisateur utilisateurs[];
+    private Etage etages[];					//liste des etages deservis. (exemple: 1,2,3,6,8,9)
+    private Option options[];
+    
+    LinkedList<Requete> requetes=new LinkedList<Requete>();
+    
     public Ascenseur(int PoidM, int nbPersM,Etage etages[]) {
     	etat="immobileFermer";
     	poidMax=PoidM;
@@ -15,28 +26,14 @@ public class Ascenseur {
     	nbEtagesDeservis=etages.length; 	
     }
     
-    private int nbEtagesDeservis;
-    private int nbPersonneMax;
-    private Etage etageCourant;
-    
     public Etage getEtageCourant() {
 		return etageCourant;
 	}
 
-	private int poidMax;
-    private String etat;   					//immobileFerme, immobileOuvert, montant, descendant
+
     public String getEtat() {
 		return etat;
 	}
-
-	private boolean bloquer=false;
-    
-    private Utilisateur utilisateurs[];
-    private Etage etages[];					//liste des etages deservis. (exemple: 1,2,3,6,8,9)
-    private Option options[];
-    
-    LinkedList<Requete> requetes=new LinkedList<Requete>();
-
     
     public void bloquer() {
     	bloquer=true;
@@ -122,18 +119,18 @@ public class Ascenseur {
 	        //remplissage d'un tableau avec les destinations des appels
 	        for(Requete re : this.requetes)
 	            //this.requetes.add(Requete.getRequeteEtage());
-	            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'�tage ou se trouve l'ascenceur n'est pas l'�tage ou il y a une requ�te
-	                this.requetes.add(re);//On ajoute l'�tage ou il y a une requ�te dans la file d'attente
+	            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'ï¿½tage ou se trouve l'ascenceur n'est pas l'ï¿½tage ou il y a une requï¿½te
+	                this.requetes.add(re);//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
 
 	        //Algorithme de tri du precedent tableau
 	        //Si on monte
 	        if(this.etat == "montant") {
-	            Collections.sort(this.requetes,comp1); //On trie les requ�tes dans l'ordre croissant (c'est � dire que les requ�tes provenant d'�tage les plus proches de l'ascenceur vont arriv� en premi�re)
+	            Collections.sort(this.requetes,comp1); //On trie les requï¿½tes dans l'ordre croissant (c'est ï¿½ dire que les requï¿½tes provenant d'ï¿½tage les plus proches de l'ascenceur vont arrivï¿½ en premiï¿½re)
 	        }
 	        else{ //Si on descend
 	            // create comparator for reverse order
 	            Comparator cmp = Collections.reverseOrder();
-	            Collections.sort(requetes,cmp); //On trie les requ�tes dans l'ordre d�croissant (cad que les requ�tes provenant des �tages les plus proches seront en premier)
+	            Collections.sort(requetes,cmp); //On trie les requï¿½tes dans l'ordre dï¿½croissant (cad que les requï¿½tes provenant des ï¿½tages les plus proches seront en premier)
 	        }
 	    }
 }
