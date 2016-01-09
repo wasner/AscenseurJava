@@ -30,6 +30,10 @@ public class Ascenseur {
 		return etageCourant;
 	}
 
+    public Etage[] getEtages()
+    {
+    	return etages;
+    }
 
     public String getEtat() {
 		return etat;
