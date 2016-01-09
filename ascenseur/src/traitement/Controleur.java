@@ -9,8 +9,8 @@ public class Controleur {
     /**
      * Default constructor
      */
-    public Controleur(int nbAscenseur, int nbEtage) {
-    	this.ascenseurs=new Ascenseur[nbAscenseur];
+    public Controleur(Ascenseur[] a) {
+    	this.ascenseurs=a;
     	//Constante.setNbAscenseur(nbAscenseur);
     	//Constante.setNbEtage(nbEtage);
     	this.requetes= new Vector<RequeteExterne>();
@@ -41,7 +41,7 @@ public class Controleur {
     /**
      * @param Ascenseur ascenseur
      */
-    public void choisirAscenseur(Ascenseur ascenseur) {
+    public void choisirAscenseur() {
         // TODO implement here
     	for(RequeteExterne r : this.requetes){
     		Ascenseur ascenceurChoisie=null;
