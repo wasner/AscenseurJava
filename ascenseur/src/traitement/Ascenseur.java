@@ -111,9 +111,13 @@ public class Ascenseur {
 	        @Override
 	        public int compare(Requete requete, Requete t1) {
 	            if(getEtat() == "montant" ){
-	                if(requete.getRequeteEtage().getNumEtage()<t1.getRequeteEtage().getNumEtage())
+	                if(requete.getRequeteEtage().getNumEtage() < t1.getRequeteEtage().getNumEtage())
 	                    return -1;
 	            }
+				if(getEtat() == "descendant"){
+					if(requete.getRequeteEtage().getNumEtage() > t1.getRequeteEtage().getNumEtage())
+						return 1;
+				}
 	                return 0;
 	        }
 	    };
@@ -127,14 +131,6 @@ public class Ascenseur {
 	                this.requetes.add(re);//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
 
 	        //Algorithme de tri du precedent tableau
-	        //Si on monte
-	        if(this.etat == "montant") {
-	            Collections.sort(this.requetes,comp1); //On trie les requï¿½tes dans l'ordre croissant (c'est ï¿½ dire que les requï¿½tes provenant d'ï¿½tage les plus proches de l'ascenceur vont arrivï¿½ en premiï¿½re)
-	        }
-	        else{ //Si on descend
-	            // create comparator for reverse order
-	            Comparator cmp = Collections.reverseOrder();
-	            Collections.sort(requetes,cmp); //On trie les requï¿½tes dans l'ordre dï¿½croissant (cad que les requï¿½tes provenant des ï¿½tages les plus proches seront en premier)
-	        }
+			Collections.sort(this.requetes,comp1); //On trie les requï¿½tes
 	    }
 }
