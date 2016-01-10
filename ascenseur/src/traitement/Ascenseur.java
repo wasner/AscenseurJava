@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Ascenseur {
 
-	private int nbEtagesDeservis;
+    private int nbEtagesDeservis;
     private int nbPersonneMax;
     private Etage etageCourant;
     
-	private int poidMax;
+    private int poidMax;
     private String etat; 					//immobileFerme, immobileOuvert, montant, descendant
 	
     private boolean bloquer=false;
@@ -23,7 +23,7 @@ public class Ascenseur {
     	etat="immobileFermer";
     	poidMax=PoidM;
     	nbPersonneMax=nbPersM;
-    	nbEtagesDeservis=etages.length; 	
+    	nbEtagesDeservis=etages.length;	
     }
     
     public Etage getEtageCourant() {
@@ -45,6 +45,32 @@ public class Ascenseur {
 
     public void debloquer() {
         bloquer=false;
+    }
+    
+    public void setEtages(Etage etages[])
+    {
+    	this.etages = etages;
+    	this.nbEtagesDeservis=etages.length; 
+    }
+    
+    public void setPersonneMax(int personneMax)
+    {
+    	this.nbPersonneMax = personneMax;
+    }
+    
+    public void setPoidMax(int poidMax)
+    {
+    	this.poidMax = poidMax;
+    }
+    
+    public int getPoidMax()
+    {
+    	return this.poidMax;
+    }
+    
+    public int getPersonneMax()
+    {
+    	return this.nbPersonneMax;
     }
 
     public void ajouterRequete(Requete requete) {
