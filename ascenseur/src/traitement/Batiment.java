@@ -11,6 +11,8 @@ public class Batiment {
 		this.ascenseurs = ascenseurs;
 	}
 	
-
+	public Etage[] getEtage (){
+		return etages;
+	}
 
 }
