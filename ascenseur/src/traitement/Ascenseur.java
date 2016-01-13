@@ -4,6 +4,11 @@ import java.util.*;
 
 public class Ascenseur {
 
+	public void PourOlivierLeGay (Batiment b){
+		/*b.getETage recupere un tableau d'etage que tu peut comparer 
+		au tableau d'etage de ton ascenseur
+		*/
+	}
     private int nbEtagesDeservis;
     private int nbPersonneMax;
     private Etage etageCourant;
