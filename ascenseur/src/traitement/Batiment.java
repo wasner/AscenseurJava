@@ -11,10 +11,6 @@ public class Batiment {
 		this.ascenseurs = ascenseurs;
 	}
 	
-	public void monter(Ascenseur ascenseur){
-		for (Etage check : etages){
-			if(this.==ascenseur.getEtageCourant())
-		}
-	}
+
 
 }
