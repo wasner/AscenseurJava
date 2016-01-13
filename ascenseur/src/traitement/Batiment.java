@@ -4,6 +4,11 @@ public class Batiment {
 	private String nomBat;
 	private Etage etages[];
 	private Ascenseur ascenseurs[];
+	
+	public String getNomBat() {
+		return nomBat;
+	}
+	
 	public Batiment(String nomBat, Etage[] etages, Ascenseur[] ascenseurs) {
 		super();
 		this.nomBat = nomBat;
