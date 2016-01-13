@@ -100,7 +100,7 @@ public class Ascenseur {
 		
 	}
     
-    public boolean etatSuivantImmoFerme(){
+	private boolean etatSuivantImmoFerme(){
     	if((requetes.size()==0) || (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
 			return true;
@@ -109,7 +109,7 @@ public class Ascenseur {
     }
     
     
-    public boolean etatSuivantImmoOuvert(){
+    private boolean etatSuivantImmoOuvert(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
     		for(int i=0;i<requetes.size();++i){
@@ -123,7 +123,7 @@ public class Ascenseur {
     }
     
     
-    public boolean etatSuivantMontant(){
+    private boolean etatSuivantMontant(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
     		return true;
@@ -133,7 +133,7 @@ public class Ascenseur {
     }
     
     
-    public boolean etatSuivantDescendant(){
+    private boolean etatSuivantDescendant(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(
     			etageCourant))==-1){
     		etat="descendant";
