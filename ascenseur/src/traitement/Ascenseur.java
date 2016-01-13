@@ -4,11 +4,6 @@ import java.util.*;
 
 public class Ascenseur {
 
-	public void PourOlivierLeGay (Batiment b){
-		/*b.getETage recupere un tableau d'etage que tu peut comparer 
-		au tableau d'etage de ton ascenseur
-		*/
-	}
     private int nbEtagesDeservis;
     private int nbPersonneMax;
     private Etage etageCourant;
@@ -87,7 +82,25 @@ public class Ascenseur {
         ajouterRequete(requete);
     }    
     
-    public boolean testEtatSuivantImmoFerme(){
+    public void monter (Batiment batiment){
+		for (int i = 0; i<batiment.getEtage().length;++i){
+			if(batiment.getEtage()[i]==etageCourant){
+				etageCourant=batiment.getEtage()[i+1];
+			}
+		}
+		
+	}
+	
+	public void descendre (Batiment batiment){
+		for (int i = 0; i<batiment.getEtage().length;++i){
+			if(batiment.getEtage()[i]==etageCourant){
+				etageCourant=batiment.getEtage()[i-1];
+			}
+		}
+		
+	}
+    
+    public boolean etatSuivantImmoFerme(){
     	if((requetes.size()==0) || (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
 			return true;
@@ -96,7 +109,7 @@ public class Ascenseur {
     }
     
     
-    public boolean testEtatSuivantImmoOuvert(){
+    public boolean etatSuivantImmoOuvert(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
     		for(int i=0;i<requetes.size();++i){
@@ -110,19 +123,21 @@ public class Ascenseur {
     }
     
     
-    public boolean testEtatSuivantMontant(){
+    public boolean etatSuivantMontant(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
     		return true;
+    		monter(batiment);
     	}
     	return false;
     }
     
     
-    public boolean testEtatSuivantDescendant(){
+    public boolean etatSuivantDescendant(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(
     			etageCourant))==-1){
     		etat="descendant";
+    		descendre(batiment);
     		return true;
     	}
     	return false;
@@ -130,10 +145,10 @@ public class Ascenseur {
 
 	public String action() {
 		if (bloquer==false){
-	        if(testEtatSuivantImmoOuvert()){}
-	        else if (testEtatSuivantImmoFerme()){}
-	        else if(testEtatSuivantDescendant()){}
-	        else if(testEtatSuivantMontant()){}
+	        if(etatSuivantImmoOuvert()){}
+	        else if (etatSuivantImmoFerme()){}
+	        else if(etatSuivantDescendant()){}
+	        else if(etatSuivantMontant()){}
 		}
         return etat;
     }
