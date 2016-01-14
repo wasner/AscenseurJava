@@ -5,19 +5,19 @@ import java.util.*;
 public class Ascenseur {
 
     private int nbEtagesDeservis;
-    private int nbPersonneMax;
+   	private int nbPersonneMax;
     private Etage etageCourant;
     
     private int poidMax;
     private String etat; 					//immobileFerme, immobileOuvert, montant, descendant
 	
-    private boolean bloquer=false;
+    private boolean bloquer=false;					
+   
+    private LinkedList<Option> options=new LinkedList<Option>();	//liste des etages deservis. (exemple: 1,2,3,6,8,9)
+    private LinkedList<Utilisateur> utilisateurs=new LinkedList<Utilisateur>();
+    private LinkedList<Etage> etages=new LinkedList<Etage>();
     
-    private Utilisateur utilisateurs[];
-    private Etage etages[];					//liste des etages deservis. (exemple: 1,2,3,6,8,9)
-    private Option options[];
-    
-    LinkedList<Requete> requetes=new LinkedList<Requete>();
+    private LinkedList<Requete> requetes=new LinkedList<Requete>();
     
     public Ascenseur(int PoidM, int nbPersM,Etage etages[]) {
     	etat="immobileFermer";
@@ -26,13 +26,12 @@ public class Ascenseur {
     	nbEtagesDeservis=etages.length;	
     }
     
+    public void setEtageCourant(Etage etageCourant) {
+		this.etageCourant = etageCourant;
+	}
+    
     public Etage getEtageCourant() {
 		return etageCourant;
-	}
-
-    public Etage[] getEtages()
-    {
-    	return etages;
     }
 
     public String getEtat() {
@@ -47,13 +46,15 @@ public class Ascenseur {
         bloquer=false;
     }
     
-    public void setEtages(Etage etages[])
-    {
-    	this.etages = etages;
-    	this.nbEtagesDeservis=etages.length; 
-    }
-    
-    public void setPersonneMax(int personneMax)
+    public LinkedList<Etage> getEtages() {
+		return etages;
+	}
+
+	public void setEtages(LinkedList<Etage> etages) {
+		this.etages = etages;
+	}
+
+	public void setPersonneMax(int personneMax)
     {
     	this.nbPersonneMax = personneMax;
     }
@@ -82,28 +83,20 @@ public class Ascenseur {
         ajouterRequete(requete);
     }    
     
-    public void monter (Batiment batiment){
-		for (int i = 0; i<batiment.getEtage().length;++i){
-			if(batiment.getEtage()[i]==etageCourant){
-				etageCourant=batiment.getEtage()[i+1];
-			}
-		}
-		
+    private void monter (){
+    	int i =this.etageCourant.getNumEtage();
+    	this.etageCourant.setNumEtage(i+1);		
 	}
 	
-	public void descendre (Batiment batiment){
-		for (int i = 0; i<batiment.getEtage().length;++i){
-			if(batiment.getEtage()[i]==etageCourant){
-				etageCourant=batiment.getEtage()[i-1];
-			}
-		}
-		
+	private void descendre (){
+		int i = this.etageCourant.getNumEtage();
+		this.etageCourant.setNumEtage(i+1);
 	}
     
 	private boolean etatSuivantImmoFerme(){
     	if((requetes.size()==0) || (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
-			return true;
+			return true;//l'état suivant est ImmoFerme
     	}
     	return false;
     }
@@ -117,7 +110,7 @@ public class Ascenseur {
     				requetes.remove(i);
     			}
     		}
-    		return true;
+    		return true; //l'état suivant est ImmoOuvert
     	}
     	return false;
     }
@@ -126,8 +119,8 @@ public class Ascenseur {
     private boolean etatSuivantMontant(){
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
-    		return true;
-    		monter(batiment);
+    		monter();
+    		return true;//l'état suivant est Montant
     	}
     	return false;
     }
@@ -137,7 +130,7 @@ public class Ascenseur {
     	if((requetes.size()!=0) && (((requetes.getFirst()).getRequeteEtage()).compareEtage(
     			etageCourant))==-1){
     		etat="descendant";
-    		descendre(batiment);
+    		descendre();//l'état suivant est Descendant
     		return true;
     	}
     	return false;
