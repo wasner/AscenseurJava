@@ -36,14 +36,22 @@ public class Ascenseur {
     public Etage getEtageCourant() {
 		return etageCourant;
     }
+    
+    
 
-    public String getEtat() {
+    public List<Requete> getRequetes() {
+		return requetes;
+	}
+
+	public String getEtat() {
 		return etat;
 	}
     
-    
-    
-    public void bloquer() {
+    public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+	public void bloquer() {
     	bloquer=true;
     }
 
@@ -79,7 +87,11 @@ public class Ascenseur {
     	return this.nbPersonneMax;
     }
 
-    public void ajouterRequete(Requete requete) {
+    public void setRequetes(List<Requete> requetes) {
+		this.requetes = requetes;
+	}
+
+	public void ajouterRequete(Requete requete) {
         requetes.add(requete);
     }
 
@@ -93,12 +105,12 @@ public class Ascenseur {
     	this.etageCourant.setNumEtage(i+1);		
 	}
 	
-	private void descendre (){
+	public void descendre (){
 		int i = this.etageCourant.getNumEtage();
-		this.etageCourant.setNumEtage(i+1);
+		this.etageCourant.setNumEtage(i-1);
 	}
     
-	private boolean etatSuivantImmoFerme(){
+	public boolean etatSuivantImmoFerme(){
     	if((requetes.size()==0) || (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
 			return true;//l'état suivant est ImmoFerme
@@ -107,7 +119,7 @@ public class Ascenseur {
     }
     
     
-    private boolean etatSuivantImmoOuvert(){
+    public boolean etatSuivantImmoOuvert(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
     		for(int i=0;i<requetes.size();++i){
@@ -121,9 +133,10 @@ public class Ascenseur {
     }
     
     
-    private boolean etatSuivantMontant(){
+    public boolean etatSuivantMontant(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
+    		System.out.println((requetes.get(0)).getRequeteEtage().getNumEtage());
     		monter();
     		return true;//l'état suivant est Montant
     	}
@@ -131,7 +144,7 @@ public class Ascenseur {
     }
     
     
-    private boolean etatSuivantDescendant(){
+    public boolean etatSuivantDescendant(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(
     			etageCourant))==-1){
     		etat="descendant";
