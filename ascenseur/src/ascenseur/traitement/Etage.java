@@ -15,4 +15,8 @@ public class Etage {
 	public int compareEtage(Etage etageCourant) {
     	return numEtage.compareTo(etageCourant.getNumEtage());
     }
+
+	public void setNumEtage(Integer numEtage) {
+		this.numEtage = numEtage;
+	}
 }
