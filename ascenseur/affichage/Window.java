@@ -1,5 +1,3 @@
-package ascenseur.affichage;
-
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")

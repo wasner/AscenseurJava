@@ -1,5 +1,3 @@
-package ascenseur.affichage;
-
 public class State {
 	private InitState initState;
 	private ParamState paramState;

@@ -1,5 +1,3 @@
-package ascenseur.traitement;
-
 public class Etage {
 
 	private Integer numEtage;

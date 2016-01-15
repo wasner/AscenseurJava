@@ -1,5 +1,3 @@
-package ascenseur.affichage;
-
 import ascenceur.traitement.Ascenceur;
 import ascenseur.traitement.Constante;
 import ascenseur.traitement.Etage;

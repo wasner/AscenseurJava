@@ -1,5 +1,3 @@
-package ascenseur.affichage;
-
 public class InitState{
 	
 	private Window window = null;

@@ -1,5 +1,3 @@
-package ascenseur.traitement;
-
 import java.util.LinkedList;
 import java.util.List;
 

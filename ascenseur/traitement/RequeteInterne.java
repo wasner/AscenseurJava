@@ -1,5 +1,3 @@
-package ascenseur.traitement;
-
 import java.util.*;
 
 public class RequeteInterne implements Requete {
@@ -11,7 +9,7 @@ public class RequeteInterne implements Requete {
     }
     
 	@Override
-	public Etage getRequeteEtage() {
+	public Etage getEtage() {
 		// TODO Auto-generated method stub
 		return etageDestination;
 	}

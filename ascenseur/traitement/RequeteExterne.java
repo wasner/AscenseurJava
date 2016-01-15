@@ -1,5 +1,3 @@
-package ascenseur.traitement;
-
 import java.util.*;
 
 /**
@@ -45,12 +43,6 @@ public class RequeteExterne implements Requete {
     public void setDirection(String direction) {
         this.direction = direction;
     }
-
-	@Override
-	public Etage getRequeteEtage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
 

@@ -1,5 +1,3 @@
-package ascenseur.affichage;
-
 public class Interface {
 	
 	@SuppressWarnings("unused")

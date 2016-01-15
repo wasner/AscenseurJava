@@ -1,5 +1,3 @@
-package ascenseur.traitement;
-
 public abstract class Constante {
 
     private static final int nbAscenceurMax = 10;
