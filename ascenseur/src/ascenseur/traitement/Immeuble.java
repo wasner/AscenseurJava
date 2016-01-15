@@ -13,8 +13,8 @@ public class Immeuble {
 	private List<VueImmeuble> vueImmeuble;
 	
 	
-	public Immeuble(String nom, LinkedList<Etage> etages,
-			LinkedList<Ascenseur> ascenseurs) {
+	public Immeuble(String nom, List<Etage> etages,
+			List<Ascenseur> ascenseurs) {
 		super();
 		this.nom = nom;
 		this.etages = etages;
@@ -31,13 +31,13 @@ public class Immeuble {
 	public List<Etage> getEtages() {
 		return etages;
 	}
-	public void setEtages(LinkedList<Etage> etages) {
+	public void setEtages(List<Etage> etages) {
 		this.etages = etages;
 	}
 	public List<Ascenseur> getAscenseurs() {
 		return ascenseurs;
 	}
-	public void setAscenseurs(LinkedList<Ascenseur> ascenseurs) {
+	public void setAscenseurs(List<Ascenseur> ascenseurs) {
 		this.ascenseurs = ascenseurs;
 	}
 }
