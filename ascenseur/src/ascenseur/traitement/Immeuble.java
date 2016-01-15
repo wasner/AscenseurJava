@@ -1,6 +1,6 @@
-package ascenseur.traitement;
-
 import java.util.LinkedList;
+
+import ascenseur.affichage.VueImmeuble;
 
 public class Immeuble {
 	
@@ -8,8 +8,7 @@ public class Immeuble {
 	private String nom;
 	private LinkedList<Etage> etages;
 	private LinkedList<Ascenseur> ascenseurs;
-	
-	
+	private LinkedList<VueImmeuble> vueImmeuble;
 	
 	public Immeuble(String nom, LinkedList<Etage> etages,
 			LinkedList<Ascenseur> ascenseurs) {
