@@ -1,4 +1,4 @@
-package ascenceur.affichage;
+package ascenseur.affichage;
 
 import java.awt.Graphics;
 import java.awt.Image;

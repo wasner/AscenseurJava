@@ -1,7 +1,7 @@
-package affichage;
+package ascenseur.affichage;
 
 /**
  * Created by w14007405 on 08/01/16.
  */
-public class g {
+public class te1 {
 }

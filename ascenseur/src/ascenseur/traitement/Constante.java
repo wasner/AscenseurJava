@@ -1,4 +1,4 @@
-package ascenceur.traitement;
+package ascenseur.traitement;
 
 public abstract class Constante {
 

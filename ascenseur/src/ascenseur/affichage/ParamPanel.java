@@ -1,4 +1,4 @@
-package ascenceur.affichage;
+package ascenseur.affichage;
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -11,8 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import ascenceur.traitement.Ascenceur;
-import ascenceur.traitement.Constante;
-import ascenceur.traitement.Etage;
+import ascenseur.traitement.Constante;
 
 @SuppressWarnings("serial")
 public class ParamPanel extends JPanel {

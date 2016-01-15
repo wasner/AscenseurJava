@@ -1,4 +1,4 @@
-package ascenceur.affichage;
+package ascenseur.affichage;
 
 public class State {
 	private InitState initState;

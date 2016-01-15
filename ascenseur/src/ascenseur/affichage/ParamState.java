@@ -1,8 +1,8 @@
-package ascenceur.affichage;
+package ascenseur.affichage;
 
 import ascenceur.traitement.Ascenceur;
-import ascenceur.traitement.Constante;
-import ascenceur.traitement.Etage;
+import ascenseur.traitement.Constante;
+import ascenseur.traitement.Etage;
 
 
 public class ParamState{

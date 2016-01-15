@@ -1,4 +1,4 @@
-package affichage;
+package ascenseur.affichage;
 
 /**
  * Created by w14007405 on 08/01/16.

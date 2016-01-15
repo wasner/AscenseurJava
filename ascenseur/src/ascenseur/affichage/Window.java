@@ -1,4 +1,4 @@
-package ascenceur.affichage;
+package ascenseur.affichage;
 
 import javax.swing.JFrame;
 
