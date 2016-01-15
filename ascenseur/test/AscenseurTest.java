@@ -35,7 +35,7 @@ public class AscenseurTest {
         List<Requete> requetes = new LinkedList<Requete>();
         for(int i = 0; i < 5; ++i){
             requetes.add(new RequeteExterne("montant",etages.get(i)));
-            System.out.println(requetes.get(i).getRequeteEtage());
+            System.out.println(requetes.get(i).getEtage());
         }
         for(int i = 0; i < 5; ++i){
             requetes.add(new RequeteExterne("descendant",etages.get(i+5)));
@@ -45,13 +45,13 @@ public class AscenseurTest {
         for(Requete req: requetes)
         {
 
-            System.out.println(req.getRequeteEtage());
+            System.out.println(req.getEtage());
         }
         ascenseur1.triAppel();
         System.out.println("Liste des requêtes triés :");
         for(Requete req: requetes)
         {
-            System.out.println(req.getRequeteEtage().getNumEtage());
+            System.out.println(req.getEtage().getNumEtage());
         }
     }
 }
