@@ -5,9 +5,10 @@ import java.util.*;
  */
 public class Controleur {
 
-    /**
-     * Default constructor
-     */
+	/**
+	 * Constructeur par défaut
+	 * @param a liste des ascenseurs
+	 */
     public Controleur(List<Ascenseur> a) {
     	this.ascenseurs=a;
     	//Constante.setNbAscenseur(nbAscenseur);
@@ -16,22 +17,22 @@ public class Controleur {
     }
 
     /**
-     * 
+     * liste contenant les ascenseurs
      */
     private List<Ascenseur> ascenseurs;
 
     /**
-     * 
+     * tableau contenant les requêtes externes
      */
     private Vector<RequeteExterne> requetes;
 
 
 	/**
 	 * permet de créer des requête externe dans l'immeuble
-	 * @param etage
-	 * @param direction
+	 * @param etage l'étage d'ou vient la requête
+	 * @param direction direction dans la qu'elle personne veux allez (monter ou descendre)
 	 */
-    void creerRequeteExterne(Etage etage, String direction) {
+    public void creerRequeteExterne(Etage etage, String direction) {
         // TODO implement here
     	this.requetes.add(new RequeteExterne( direction, etage));
     }
@@ -77,7 +78,7 @@ public class Controleur {
 
 	/**
 	 * permet de séléctionner l'ascenseur
-	 * @param ascenseurs
+	 * @param ascenseurs ascenseur sélectionner
 	 */
     public void setAscenseurs(List<Ascenseur> ascenseurs) {
 		this.ascenseurs = ascenseurs;
@@ -85,9 +86,9 @@ public class Controleur {
 
 	/**
 	 * Vérifie si deux étages sont égaux
-	 * @param e1
-	 * @param e2
-	 * @return
+	 * @param e1 première étage
+	 * @param e2 deuxième étage
+	 * @return si les deux étages sont égaux true sinon false
 	 */
 	private boolean etagesEgaux(Etage e1, Etage e2){
 		
@@ -97,9 +98,9 @@ public class Controleur {
 
 	/**
 	 * permet de savoir si le première étage (e1) comparé est plus petit que le deuxième (e2)
-	 * @param e1
-	 * @param e2
-	 * @return
+	 * @param e1 première étage
+	 * @param e2 deuxième étage
+	 * @return true si l'égage 1 est plus petit que le 2
 	 */
     private boolean etageUnPlusPetit(Etage e1, Etage e2){
     	return e1.compareEtage(e2)<0;
@@ -107,9 +108,9 @@ public class Controleur {
 
 	/**
 	 * permet de savoir si le première étage (e1) comparé est plus grand que le deuxième (e2)
-	 * @param e1
-	 * @param e2
-	 * @return
+	 * @param e1 première étage
+	 * @param e2 deuxième étage
+	 * @return true si l'étage 1 est plus grand que le 2
 	 */
     private boolean etageUnPlusGrand(Etage e1, Etage e2){
     	return e1.compareEtage(e2)>0;

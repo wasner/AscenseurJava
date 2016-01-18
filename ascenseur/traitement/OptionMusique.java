@@ -9,7 +9,7 @@ public class OptionMusique extends Option {
 
     /**
      * affichage propre de l'option musique
-     * @return
+     * @return String
      */
     public String toString(){
     	return "Option musique " + delegue.toString();

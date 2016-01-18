@@ -13,7 +13,7 @@ public abstract class Option implements Ascenseur  {
 
 	/**
 	 * Constructeur d'option avec en paramètre le délégué d'ascenseur
-	 * @param delegeu
+	 * @param delegeu c'est le délégué de l'ascenseur
 	 */
 	public Option(Ascenseur delegeu) {
 		// TODO Auto-generated constructor stub
@@ -153,7 +153,7 @@ public abstract class Option implements Ascenseur  {
 
 	/**
 	 * permet d'ajouter des vue pour l'ascenseur(affichage)
-	 * @param v
+	 * @param v vue pour l'ascenseur
 	 */
 	public void addVue(VueAscenseur v) {
 		delegue.addVue(v);

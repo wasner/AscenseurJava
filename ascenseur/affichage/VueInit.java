@@ -68,7 +68,7 @@ public class VueInit implements VueImeuble {
 
 	/**
 	 * Constructeur de la première fenêtre permettant d'ajouter des ascenseurs, des étages et de modifier les caractéristiques de chaque ascenseurs
-	 * @param immeublee
+	 * @param immeublee l'immeuble que l'on veut gérer avec notre application
 	 */
 	public VueInit(Immeuble immeublee)
 	{

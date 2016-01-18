@@ -9,7 +9,7 @@ public class Etage {
 
 	/**
 	 * constructeur d'étage
-	 * @param numE
+	 * @param numE numéros de l'étage
 	 */
     public Etage(int numE) {
     	numEtage=numE;
@@ -25,7 +25,7 @@ public class Etage {
 
 	/**
 	 * comparateur d'étage
-	 * @param etageCourant
+	 * @param etageCourant l'étage courant de l'ascenseur
 	 * @return (int)
 	 */
 	public int compareEtage(Etage etageCourant) {
@@ -34,7 +34,7 @@ public class Etage {
 
 	/**
 	 * permet de fixer le numéro d'étage
-	 * @param i
+	 * @param i fixer le numéros de l'étage à i
 	 */
 	public void setNumEtage(int i) {
 		// TODO Auto-generated method stub
@@ -43,7 +43,7 @@ public class Etage {
 
 	/**
 	 * permet d'afficher proprement le numéro de l'étage
-	 * @return
+	 * @return String
 	 */
 	public String toString(){
 		return Integer.toString(numEtage);

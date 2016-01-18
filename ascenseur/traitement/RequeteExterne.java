@@ -43,13 +43,13 @@ public class RequeteExterne implements Requete {
 
     /**
      * permet de faire une requête pour monter
-     * @param etage
+     * @param etage etage de l'appel
      */
     public void RequeteMonter(Etage etage) { etage = etage;}
 
     /**
      * permet de savoir dans qu'elle direction la personne veux allez
-     * @return
+     * @return la direction souhaitée
      */
     public String getDirection() {
         return direction;
@@ -57,7 +57,7 @@ public class RequeteExterne implements Requete {
 
     /**
      * permet de définir la direction de la requête
-     * @param direction
+     * @param direction la direction souhaitée
      */
     public void setDirection(String direction) {
         this.direction = direction;

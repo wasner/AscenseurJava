@@ -31,7 +31,7 @@ public class Immeuble {
 
 	/**
 	 * permet de retourner le contrôleur
-	 * @return
+	 * @return co
 	 */
 	public Controleur getCo() {
 		return co;
@@ -39,7 +39,7 @@ public class Immeuble {
 
 	/**
 	 * permet de retourner les vue pour l'immeuble
-	 * @return
+	 * @return vueImmeuble
 	 */
 	public List<VueImeuble> getVue() {
 		return vueImmeuble;
@@ -47,10 +47,10 @@ public class Immeuble {
 
 	/**
 	 * constructeur d'immeuble
-	 * @param nom
-	 * @param etages
-	 * @param ascenseurs
-	 * @param co
+	 * @param nom nom de l'immeuble
+	 * @param etages nombre d'étages pour l'immeuble
+	 * @param ascenseurs nombres d'ascenseurs que comporte l'immeuble
+	 * @param co qu'elle controleur va le gérer
 	 */
 	public Immeuble(String nom, List<Etage> etages,
 			List<Ascenseur> ascenseurs, Controleur co) {
@@ -64,7 +64,7 @@ public class Immeuble {
 
 	/**
 	 * retourner le nom de l'immeuble
-	 * @return
+	 * @return nom
 	 */
 	public String getNom() {
 		return nom;
@@ -72,7 +72,7 @@ public class Immeuble {
 
 	/**
 	 * permet de définir le nom de l'immeuble
-	 * @param nom
+	 * @param nom nom de l'immeuble
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -80,7 +80,7 @@ public class Immeuble {
 
 	/**
 	 * permet de retourner la liste des étages de l'immeuble
-	 * @return
+	 * @return etages
 	 */
 	public List<Etage> getEtages() {
 		return etages;
@@ -88,7 +88,7 @@ public class Immeuble {
 
 	/**
 	 * permet de définir la liste d'étages de l'immeuble
-	 * @param etages
+	 * @param etages liste d'étages
 	 */
 	public void setEtages(List<Etage> etages) {
 		this.etages = etages;
@@ -104,7 +104,7 @@ public class Immeuble {
 
 	/**
 	 * permet de définir la liste des ascenseurs pour un immeuble
-	 * @param ascenseurs
+	 * @param ascenseurs liste d'ascenseurs
 	 */
 	public void setAscenseurs(List<Ascenseur> ascenseurs) {
 		this.ascenseurs = ascenseurs;
@@ -112,7 +112,7 @@ public class Immeuble {
 
 	/**
 	 * permet d'ajouter une vue pour l'immeuble (affichage)
-	 * @param vue
+	 * @param vue affichage de la vue immeuble
 	 */
 	public void addVue(VueImeuble vue){
 		vueImmeuble.add(vue);

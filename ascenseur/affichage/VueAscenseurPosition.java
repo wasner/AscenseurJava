@@ -31,7 +31,7 @@ public class VueAscenseurPosition implements VueAscenseur {
 
 	/**
 	 * permet de connaitre l'étage
-	 * @return
+	 * @return etage de l'ascenseur
 	 */
 	public Etage getEtage(){
 		return et;
@@ -39,7 +39,7 @@ public class VueAscenseurPosition implements VueAscenseur {
 
 	/**
 	 * permet de connaitre l'état de l'ascenseur
-	 * @return
+	 * @return etat de l'ascenseur
 	 */
 	public String getEtat(){
 		return asc.getEtat();

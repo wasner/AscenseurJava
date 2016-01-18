@@ -22,10 +22,10 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * Constructeur de l'ascenseur
-	 * @param num
-	 * @param PoidM
-	 * @param nbPersM
-	 * @param etages
+	 * @param num numéros d'ascenseur
+	 * @param PoidM poids maximum
+	 * @param nbPersM nombres de personnes maximum
+	 * @param etages etages qu'il déssert
 	 */
     public AscenseurConcret(int num, int PoidM, int nbPersM,List<Etage> etages) {
     	//New
@@ -41,7 +41,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * Fonction permettant d'ajouter une vue pour l'ascenseur
-	 * @param vue
+	 * @param vue vue de l'ascenseur
 	 */
     public void addVue(VueAscenseur vue)
     {
@@ -79,7 +79,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de choisir a qu'elle étage se trouve l'ascenseur
-	 * @param etageCourant
+	 * @param etageCourant l'étage ou se trouve l'ascenseur
 	 */
     public void setEtageCourant(Etage etageCourant) {
 		this.etageCourant = etageCourant;
@@ -120,7 +120,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet d'avoir la liste des étages que désert l'ascenseur
-	 * @return list<Etage> contenant les différents étages
+	 * @return list d'étage contenant les différents étages
 	 */
 	public List<Etage> getEtages() {
 		return etages;
@@ -128,7 +128,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de fixer le nombres de personnes max dans l'ascenseur
-	 * @param personneMax
+	 * @param personneMax le nombres de personnes maximum qu'accepte l'ascenseur
 	 */
 	public void setPersonneMax(int personneMax)
     {
@@ -137,7 +137,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de définir le poids maximum accepter dans l'ascenseur
-	 * @param poidMax
+	 * @param poidMax poids maximum qu'accepte l'ascenseur
 	 */
     public void setPoidMax(int poidMax)
     {
@@ -146,7 +146,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de retourner le poids total accepter pour un ascenseur
-	 * @return
+	 * @return le poids maximum accepter dans un ascenseur
 	 */
     public int getPoidMax()
     {
@@ -164,7 +164,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de fixer la liste des étages que désert l'ascenseur
-	 * @param etages
+	 * @param etages liste des étages que dessert l'ascenseur
 	 */
     public void setEtages(List<Etage> etages) {
     	
@@ -182,7 +182,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de fixer la liste des requêtes à un ascenseur
-	 * @param requetes
+	 * @param requetes liste des requêtes attribué à un ascenseur
 	 */
 	public void setRequetes(List<Requete> requetes) {
 		this.requetes = requetes;
@@ -190,7 +190,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet d'ajouter des requêtes à un ascenseur
-	 * @param requete
+	 * @param requete une requête pour un ascenseur
 	 */
 	public void ajouterRequete(Requete requete) {
         requetes.add(requete);
@@ -198,7 +198,7 @@ public class AscenseurConcret implements Ascenseur{
 
 	/**
 	 * permet de créer des requêtes interne à l'ascenseur
-	 * @param etage
+	 * @param etage requête interne à un ascenseur
 	 */
     public void creerRequeteInterne(Etage etage) {
     	RequeteInterne requete = new RequeteInterne(etage);
