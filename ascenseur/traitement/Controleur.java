@@ -1,3 +1,4 @@
+package traitement;
 import java.util.*;
 
 /**
@@ -8,7 +9,7 @@ public class Controleur {
     /**
      * Default constructor
      */
-    public Controleur(Ascenseur[] a) {
+    public Controleur(List<Ascenseur> a) {
     	this.ascenseurs=a;
     	//Constante.setNbAscenseur(nbAscenseur);
     	//Constante.setNbEtage(nbEtage);
@@ -18,7 +19,7 @@ public class Controleur {
     /**
      * 
      */
-    private Ascenseur ascenseurs[];
+    private List<Ascenseur> ascenseurs;
 
     /**
      * 
@@ -38,15 +39,20 @@ public class Controleur {
     }
 
     /**
-     * @param Ascenseur ascenseur
+     * @param AscenseurConcret ascenseur
      */
     public void choisirAscenseur() {
         // TODO implement here
+    	//System.out.println("eeeeeeee");
+    	//System.out.println(requetes.size());
     	for(RequeteExterne r : this.requetes){
+    		//System.out.println(ascenseurs.size());
     		Ascenseur ascenceurChoisie=null;
     		for(Ascenseur a : this.ascenseurs){
+    			//System.out.println(a.getEtat()+ " " + a.getEtageCourant().getNumEtage());
     			if(r.getDirection()==a.getEtat()){
     				for (Etage e : a.getEtages()){
+    					//System.out.print(e.getNumEtage());
     					if (etagesEgaux(e, r.getEtage())){
     						if(r.getDirection()=="descendant" && etageUnPlusPetit(r.getEtage(),a.getEtageCourant())){
     							ascenceurChoisie=a;
@@ -57,15 +63,26 @@ public class Controleur {
     						break;
     					}
     				}
+    				//System.out.println(" ");
     			}
     			else if (ascenceurChoisie==null && a.getEtat()=="immobileFerme"){
     				ascenceurChoisie=a;
+    				//System.out.println("eeeeeeS");
     			}
     		}
-    		ascenceurChoisie.ajouterRequete(r);
+    		if(ascenceurChoisie != null){
+    			ascenceurChoisie.ajouterRequete(r);
+    			this.requetes.remove(r);
+    			//System.out.println(ascenceurChoisie);
+    			break;
+    		}
     	}
     }
-    private boolean etagesEgaux(Etage e1, Etage e2){
+    public void setAscenseurs(List<Ascenseur> ascenseurs) {
+		this.ascenseurs = ascenseurs;
+	}
+
+	private boolean etagesEgaux(Etage e1, Etage e2){
 		
     	return e1.compareEtage(e2)==0;
     	
