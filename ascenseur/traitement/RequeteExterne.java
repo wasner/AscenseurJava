@@ -12,9 +12,9 @@ public class RequeteExterne implements Requete {
     private Etage etage;
 
     /**
-     * Constructeur par défaut de la requête externe
+     * Constructeur par dÃ©faut de la requÃªte externe
      * @param direction si la personne veux monter ou descendre
-     * @param etage l'étage d'où provient l'appel de la requête
+     * @param etage l'Ã©tage d'oÃ¹ provient l'appel de la requÃªte
      */
     public RequeteExterne(String direction, Etage etage) {
         this.direction = direction;
@@ -36,28 +36,18 @@ public class RequeteExterne implements Requete {
      *
      * @param etage          Etage de l'appel
      */
-    public void RequeteDescendre(Etage etage)
-    {
-        etage = etage;
-    }
-
-    /**
-     * permet de faire une requête pour monter
-     * @param etage etage de l'appel
-     */
-    public void RequeteMonter(Etage etage) { etage = etage;}
 
     /**
      * permet de savoir dans qu'elle direction la personne veux allez
-     * @return la direction souhaitée
+     * @return la direction souhaitÃ©e
      */
     public String getDirection() {
         return direction;
     }
 
     /**
-     * permet de définir la direction de la requête
-     * @param direction la direction souhaitée
+     * permet de dÃ©finir la direction de la requÃªte
+     * @param direction la direction souhaitÃ©e
      */
     public void setDirection(String direction) {
         this.direction = direction;
