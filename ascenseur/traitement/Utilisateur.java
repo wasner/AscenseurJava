@@ -1,3 +1,5 @@
+package traitement;
+
 import java.util.*;
 
 /**
