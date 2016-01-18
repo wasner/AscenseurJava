@@ -1,6 +1,8 @@
-public class OptionVitesse implements Option {
+package traitement;
+public class OptionVitesse extends Option {
 
-    public OptionVitesse() {
+    public OptionVitesse(Ascenseur deleuger) {
+    	super(deleuger);
     }
 
 }
