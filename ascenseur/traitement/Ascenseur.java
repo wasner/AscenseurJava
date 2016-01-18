@@ -26,7 +26,10 @@ public class Ascenseur {
 		this.poidMax = poidMax;
 		this.etages = etages;
 	}
-    
+
+    public Ascenseur() {
+    }
+
     public void setEtageCourant(Etage etageCourant) {
 		this.etageCourant = etageCourant;
 	}
@@ -109,7 +112,7 @@ public class Ascenseur {
 	}
     
 	public boolean etatSuivantImmoFerme(){
-    	if((requetes.size()==0) || (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))!=0){
+    	if((requetes.size()==0) || (((requetes.get(0)).getEtage()).compareEtage(etageCourant))!=0){
 			etat="immobileFerme";
 			return true;//l'état suivant est ImmoFerme
     	}
@@ -118,10 +121,10 @@ public class Ascenseur {
     
     
     public boolean etatSuivantImmoOuvert(){
-    	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))==0){
+    	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
     		for(int i=0;i<requetes.size();++i){
-    			if((requetes.get(i).getRequeteEtage()).compareEtage(etageCourant)==0){
+    			if((requetes.get(i).getEtage()).compareEtage(etageCourant)==0){
     				requetes.remove(i);
     			}
     		}
@@ -132,9 +135,9 @@ public class Ascenseur {
     
     
     public boolean etatSuivantMontant(){
-    	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(etageCourant))==1){
+    	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
-    		System.out.println((requetes.get(0)).getRequeteEtage().getNumEtage());
+    		System.out.println((requetes.get(0)).getEtage().getNumEtage());
     		monter();
     		return true;//l'état suivant est Montant
     	}
@@ -143,7 +146,7 @@ public class Ascenseur {
     
     
     public boolean etatSuivantDescendant(){
-    	if((requetes.size()!=0) && (((requetes.get(0)).getRequeteEtage()).compareEtage(
+    	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(
     			etageCourant))==-1){
     		etat="descendant";
     		descendre();//l'état suivant est Descendant
@@ -162,30 +165,86 @@ public class Ascenseur {
         return etat;
     }
 
-	 private Comparator<Requete> comp1 = new Comparator<Requete>() {
+	 private Comparator<Requete> comparateurIntelligent = new Comparator<Requete>() {
 	        @Override
-	        public int compare(Requete requete, Requete t1) {
-	            if(getEtat() == "montant" ){
-	                if(requete.getRequeteEtage().getNumEtage() < t1.getRequeteEtage().getNumEtage())
-	                    return -1;
-	            }
+	        public int compare(Requete requete, Requete requete1) {
+                System.out.println("Etat de l'ascenseur : " + getEtat());
+	            if(getEtat() == "montant" ){ //Si l'ascenseur monte et que
+                    if(requete.getEtage().getNumEtage() > getEtageCourant().getNumEtage())//L'étage d'ou provient la requête est au dessus de l'étage ou se trouve l'ascenseur
+                    {
+                        if (requete1.getDirection() == "montant")//et que la personne veux monter
+                            return -1; //Alors je le place au début de la liste
+                        else
+                            return 1; // Si la personne veux descendre, je la met dans la file d'attente
+                    }
+                    else // Si l'étage d'ou provient la requete est au dessous de l'étage de l'ascenseur et que
+                    {
+                        if (requete1.getDirection() == "descendant")// la personne veux descendre
+                            return 1; //Je la met en file d'attente
+                        else  //Si la personne veux monter
+                            return 1; // je la met en file d'attente sinon sa obligerais l'ascenseur à descendre puis remonter
+                    }
+	            }// Sinon si l'ascenseur descend
 				if(getEtat() == "descendant"){
-					if(requete.getRequeteEtage().getNumEtage() > t1.getRequeteEtage().getNumEtage())
-						return 1;
+                    if(requete.getEtage().getNumEtage() > getEtageCourant().getNumEtage())//L'étage d'ou provient la requête est au dessus de l'étage ou se trouve l'ascenseur
+                    {
+                        if (requete1.getDirection() == "montant")//et que la personne veux monter
+                            return 1; //Alors je le place en file d'attente
+                        else
+                            return 1; // Si la personne veux descendre, je la met dans la file d'attente, sinon sa obligerais l'ascenseur à monter pour redescendre
+                    }
+                    else // Si l'étage d'ou provient la requete est au dessous de l'étage de l'ascenseur et que
+                    {
+                        if (requete1.getDirection() == "descendant")// la personne veux descendre
+                            return -1; //Je la met en premier
+                        else  //Si la personne veux monter
+                            return 1; // je la met en file d'attente
+                    }
 				}
 	                return 0;
 	        }
 	    };
+    private Comparator<Requete> comparateurClassique = new Comparator<Requete>() {
+        @Override
+        public int compare(Requete requete1, Requete requete2) {
+            if (getEtat() == "montant") { //Si l'ascenseur monte
+                if (requete1.getEtage().getNumEtage() < getEtageCourant().getNumEtage()) //Que la requêtes est au dessous de la ou se trouve l'ascenseur
+                    if (requete1.getEtage().getNumEtage() < requete2.getEtage().getNumEtage())//et que l'étage ou se trouve la première requête se trouve en dessous de la deuxième
+                        return 1; //file d'attente
+                    else
+                        return -1; //Je la fais remonter
+                else //Si la requête est au dessus d'ou se trouve l'ascenseur
+                    if (requete1.getEtage().getNumEtage() < requete2.getEtage().getNumEtage()) //et que l'étage ou se trouve la 1er requete se trouve au dessous de la deuxième
+                        return 1;
+                    else
+                        return -1;
+            }
+            if (getEtat() == "descendant") {
+                if (requete1.getEtage().getNumEtage() < getEtageCourant().getNumEtage()) //Que la requêtes est au dessous de la ou se trouve l'ascenseur
+                    if (requete1.getEtage().getNumEtage() < requete2.getEtage().getNumEtage())//et que l'étage ou se trouve la première requête se trouve en dessous de la deuxième
+                        return -1; //Je la fais remonter
+                    else
+                        return 1; //file d'attente
+                else //Si la requête est au dessus d'ou se trouve l'ascenseur
+                    if (requete1.getEtage().getNumEtage() < requete2.getEtage().getNumEtage()) //et que l'étage ou se trouve la 1er requete se trouve au dessous de la deuxième
+                        return -1;
+                    else
+                        return 1;
+            }
+            return 0;
+        }
+    };
 
-	    public void triAppel() {
+
+        public void triAppel() {
 	        //Fonction triant les appels en attente
 	        //remplissage d'un tableau avec les destinations des appels
-	        for(Requete re : this.requetes)
+	        /*for(Requete re : this.requetes)
 	            //this.requetes.add(Requete.getRequeteEtage());
-	            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'ï¿½tage ou se trouve l'ascenceur n'est pas l'ï¿½tage ou il y a une requï¿½te
+	            if(re.getEtage().compareEtage(this.getEtageCourant())!=0) //Si l'ï¿½tage ou se trouve l'ascenceur n'est pas l'ï¿½tage ou il y a une requï¿½te
 	                this.requetes.add(re);//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
 
-	        //Algorithme de tri du precedent tableau
-			Collections.sort(this.requetes,comp1); //On trie les requï¿½tes
+	        *///Algorithme de tri du precedent tableau
+			Collections.sort(this.requetes, comparateurIntelligent); //On trie les requï¿½tes
 	    }
 }
