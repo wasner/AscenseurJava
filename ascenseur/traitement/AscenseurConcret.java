@@ -1,4 +1,3 @@
-package traitement;
 import java.util.*;
 import affichage.VueAscenseur;
 public class AscenseurConcret implements Ascenseur{
@@ -20,7 +19,14 @@ public class AscenseurConcret implements Ascenseur{
     private List<VueAscenseur> vueAscenseur = new LinkedList<VueAscenseur>();
     
     private List<Requete> requetes=new LinkedList<Requete>();
-    
+
+	/**
+	 * Constructeur de l'ascenseur
+	 * @param num
+	 * @param PoidM
+	 * @param nbPersM
+	 * @param etages
+	 */
     public AscenseurConcret(int num, int PoidM, int nbPersM,List<Etage> etages) {
     	//New
     	this.num = num;
@@ -32,105 +38,191 @@ public class AscenseurConcret implements Ascenseur{
     	nbPersonneMax=nbPersM;
     	nbEtagesDeservis=etages.size();	
     }
-    
-    //NEW
+
+	/**
+	 * Fonction permettant d'ajouter une vue pour l'ascenseur
+	 * @param vue
+	 */
     public void addVue(VueAscenseur vue)
     {
     	vueAscenseur.add(vue);
     }
-    
-    
+
+	/**
+	 * fonction toString qui permet d'affichez proprement le numéros de l'ascenseur, le poids maximum et le nombres d'étages déservie
+	 * @return une phrase contenant les informations sur l'ascenseur
+	 */
     public String toString()
     {
     	return "Num : " + this.num + " " + "Poids maximum : " +Integer.toString(this.poidMax)+ " " +
     	        "Nombre d'etages deservit : " + Integer.toString(this.nbEtagesDeservis);
     }
-    
+
+	/**
+	 * fonction qui permet de savoir le nombres d'étages
+	 * @return le nombres d'étages
+	 */
     public int getNombreEtage()
     {
 		return this.nombreEtages;
     	
     }
-    
+
+	/**
+	 * retourne le numéro de l'ascenseur
+	 * @return (int) numéros de l'ascenseur
+	 */
     public int getNum() {
 		// TODO Auto-generated method stub
 		return this.num;
 	}
-    
-    //Fin NEW
-    
+
+	/**
+	 * permet de choisir a qu'elle étage se trouve l'ascenseur
+	 * @param etageCourant
+	 */
     public void setEtageCourant(Etage etageCourant) {
 		this.etageCourant = etageCourant;
 		for(VueAscenseur vue : vueAscenseur){
 			vue.miseAJour();
 		}
 	}
-    
+
+	/**
+	 * permet de connaitre l'étage ou se trouve l'ascenseur
+	 * @return l'étage courant de l'ascenseur
+	 */
     public Etage getEtageCourant() {
 		return etageCourant;
     }
+
+	/**
+	 * permet de connaitre l'état de l'ascenseur
+	 * @return String (immobileFerme, immobileOuvert, montant, descendant)
+	 */
     public String getEtat() {
 		return etat;
 	}
-    
+
+	/**
+	 * permet de bloquer l'ascenseur
+	 */
     public void bloquer() {
     	bloquer=true;
     }
+
+	/**
+	 * permet de débloquer l'ascenseur
+	 */
     public void debloquer() {
         bloquer=false;
     }
-    
-    
+
+	/**
+	 * permet d'avoir la liste des étages que désert l'ascenseur
+	 * @return list<Etage> contenant les différents étages
+	 */
 	public List<Etage> getEtages() {
 		return etages;
 	}
+
+	/**
+	 * permet de fixer le nombres de personnes max dans l'ascenseur
+	 * @param personneMax
+	 */
 	public void setPersonneMax(int personneMax)
     {
     	this.nbPersonneMax = personneMax;
     }
-    
+
+	/**
+	 * permet de définir le poids maximum accepter dans l'ascenseur
+	 * @param poidMax
+	 */
     public void setPoidMax(int poidMax)
     {
     	this.poidMax = poidMax;
     }
-    
+
+	/**
+	 * permet de retourner le poids total accepter pour un ascenseur
+	 * @return
+	 */
     public int getPoidMax()
     {
     	return this.poidMax;
     }
-    
+
+	/**
+	 * permet de retourner le nombres de personnes max dans un ascenseur
+	 * @return nbPersonneMax
+	 */
     public int getPersonneMax()
     {
     	return this.nbPersonneMax;
     }
-    
+
+	/**
+	 * permet de fixer la liste des étages que désert l'ascenseur
+	 * @param etages
+	 */
     public void setEtages(List<Etage> etages) {
     	
 		this.etages = etages;
 		this.nombreEtages = this.etages.size();
 	}
+
+	/**
+	 * permet de retourner la liste des requêtes affecté à un ascenseur
+	 * @return liste de requêtes
+	 */
 	public List<Requete> getRequetes() {
 		return requetes;
 	}
+
+	/**
+	 * permet de fixer la liste des requêtes à un ascenseur
+	 * @param requetes
+	 */
 	public void setRequetes(List<Requete> requetes) {
 		this.requetes = requetes;
 	}
+
+	/**
+	 * permet d'ajouter des requêtes à un ascenseur
+	 * @param requete
+	 */
 	public void ajouterRequete(Requete requete) {
         requetes.add(requete);
     }
+
+	/**
+	 * permet de créer des requêtes interne à l'ascenseur
+	 * @param etage
+	 */
     public void creerRequeteInterne(Etage etage) {
     	RequeteInterne requete = new RequeteInterne(etage);
         ajouterRequete(requete);
-    }    
-    
+    }
+
+	/**
+	 * permet de faire monter l'ascenseur d'un étage
+	 */
     public void monter (){
     	setEtageCourant(new Etage(etageCourant.getNumEtage()+1));	
 	}
-	
+
+	/**
+	 * permet de faire descendre l'ascenseur d'un étage
+	 */
     public void descendre (){
 		setEtageCourant(new Etage(etageCourant.getNumEtage()-1));
 	}
-    
+
+	/**
+	 * permet de fixer le prochaine état de l'ascenseur à immobile et porte fermé
+	 * @return true si il y a plus de requêtes pour cette étage false sinon
+	 */
     public boolean etatSuivantImmoFerme(){
     	if((requetes.size()==0) || ((((requetes.get(0))).getEtage()).compareEtage(etageCourant)!=0)&&etat=="immobileOuvert"){
 			etat="immobileFerme";
@@ -141,8 +233,11 @@ public class AscenseurConcret implements Ascenseur{
     	}
     	return false;
     }
-    
-    
+
+	/**
+	 * permet de fixer le prochaine état de l'ascenseur à immobile et porte ouverte
+	 * @return true si il reste des requêtes à satisfaire false sinon
+	 */
     public boolean etatSuivantImmoOuvert(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(etageCourant))==0){
     		etat="immobileOuvert";
@@ -158,14 +253,14 @@ public class AscenseurConcret implements Ascenseur{
     			
     		}
     		return true;
-    		
-    		
-    		
     	}
     	return false;
     }
-    
-    
+
+	/**
+	 * permet de fixer l'état suivant de l'ascenseur à montant
+	 * @return S'il y a des requêtes et que c'est requête proviennent de plus haut return true; false sinon
+	 */
     public boolean etatSuivantMontant(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(etageCourant))==1){
     		etat="montant";
@@ -174,8 +269,11 @@ public class AscenseurConcret implements Ascenseur{
     	}
     	return false;
     }
-    
-    
+
+	/**
+	 * permet de fixer l'état de l'ascenseur à descendant
+	 * @return s'il y a des requêtes et que c'est requêtes proviennent de plus bas return true; false sinon
+	 */
     public boolean etatSuivantDescendant(){
     	if((requetes.size()!=0) && (((requetes.get(0)).getEtage()).compareEtage(
     			etageCourant))==-1){
@@ -185,6 +283,11 @@ public class AscenseurConcret implements Ascenseur{
     	}
     	return false;
     }
+
+	/**
+	 * permet de définir l'action de l'ascenseur, si celui-ci n'est pas bloquer
+	 * @return dépends de la situation, soit immobileOuvert, immobileFerme, descendant, montant
+	 */
 	public String action() {
 		if (bloquer==false){
 	        if(etatSuivantImmoOuvert()){}
@@ -194,6 +297,10 @@ public class AscenseurConcret implements Ascenseur{
 		}
         return etat;
     }
+
+	/**
+	 * permet de triées les requêtes attribuées à un ascenseur
+	 */
 	public void triAppel() {
         Set<Requete> reqtri = new TreeSet<Requete>(new Comparator<Requete>() {
 			@Override
@@ -227,6 +334,10 @@ public class AscenseurConcret implements Ascenseur{
         
     }
 
+	/**
+	 * permet de savoir si l'ascenseur est bloquer ou non
+	 * @return la variable contenant true si l'ascenseur est bloqué, false sinon
+	 */
 		@Override
 		public boolean isBloquer() {
 			// TODO Auto-generated method stub

@@ -1,5 +1,3 @@
-package traitement;
-
 import java.util.*;
 
 /**
@@ -14,12 +12,12 @@ public class Utilisateur {
     }
 
     /**
-     * 
+     * Nom de la personne
      */
     private String nom;
 
     /**
-     * 
+     * Poids de la personne
      */
     private int poid;
 
@@ -28,7 +26,7 @@ public class Utilisateur {
 
 
     /**
-     * @return
+     * @return 0
      */
     public int getPoid() {
         // TODO implement here

@@ -1,8 +1,7 @@
-package traitement;
 import java.util.*;
 
 /**
- * 
+ * Classe contenant toute la partie contrôle du projet
  */
 public class Controleur {
 
@@ -27,23 +26,20 @@ public class Controleur {
     private Vector<RequeteExterne> requetes;
 
 
-
-
-    /**
-     * @param int etage 
-     * @param String direction
-     */
-    public void creerRequeteExterne(Etage etage, String direction) {
+	/**
+	 * permet de créer des requête externe dans l'immeuble
+	 * @param etage
+	 * @param direction
+	 */
+    void creerRequeteExterne(Etage etage, String direction) {
         // TODO implement here
     	this.requetes.add(new RequeteExterne( direction, etage));
     }
 
-    /**
-     * @param AscenseurConcret ascenseur
-     */
+	/**
+	 * permet de choisir l'ascenseur de manière optimal pour satisfaire les requêtes
+	 */
     public void choisirAscenseur() {
-        // TODO implement here
-    	//System.out.println("eeeeeeee");
     	//System.out.println(requetes.size());
     	for(RequeteExterne r : this.requetes){
     		//System.out.println(ascenseurs.size());
@@ -78,18 +74,43 @@ public class Controleur {
     		}
     	}
     }
+
+	/**
+	 * permet de séléctionner l'ascenseur
+	 * @param ascenseurs
+	 */
     public void setAscenseurs(List<Ascenseur> ascenseurs) {
 		this.ascenseurs = ascenseurs;
 	}
 
+	/**
+	 * Vérifie si deux étages sont égaux
+	 * @param e1
+	 * @param e2
+	 * @return
+	 */
 	private boolean etagesEgaux(Etage e1, Etage e2){
 		
     	return e1.compareEtage(e2)==0;
     	
     }
+
+	/**
+	 * permet de savoir si le première étage (e1) comparé est plus petit que le deuxième (e2)
+	 * @param e1
+	 * @param e2
+	 * @return
+	 */
     private boolean etageUnPlusPetit(Etage e1, Etage e2){
     	return e1.compareEtage(e2)<0;
     }
+
+	/**
+	 * permet de savoir si le première étage (e1) comparé est plus grand que le deuxième (e2)
+	 * @param e1
+	 * @param e2
+	 * @return
+	 */
     private boolean etageUnPlusGrand(Etage e1, Etage e2){
     	return e1.compareEtage(e2)>0;
     }

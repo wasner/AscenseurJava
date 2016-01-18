@@ -1,5 +1,3 @@
-package traitement;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public interface Ascenseur {
 	public void triAppel();
 	public void addVue(VueAscenseur v);
 	public boolean isBloquer();
-	public void monter ();
-	public void descendre ();
+	public void monter();
+	public void descendre();
 	public void ajouterRequete(Requete requete);
 }
