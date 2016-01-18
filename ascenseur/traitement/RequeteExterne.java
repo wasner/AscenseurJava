@@ -1,3 +1,5 @@
+package traitement;
+
 import java.util.*;
 
 /**
@@ -43,6 +45,8 @@ public class RequeteExterne implements Requete {
     public void setDirection(String direction) {
         this.direction = direction;
     }
+
+
 
 }
 
