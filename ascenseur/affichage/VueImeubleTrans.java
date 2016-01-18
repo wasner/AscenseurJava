@@ -23,6 +23,11 @@ public class VueImeubleTrans implements VueImeuble {
 	private List<JPanel> pane;
 	private List<JLabel> labelList;
 	private List<VueAscenseurPosition> vues;
+
+	/**
+	 * Constructeur de la vue de l'immeuble trans
+	 * @param im l'immeuble concerné
+	 */
 	public VueImeubleTrans(Immeuble im) {
 		// TODO Auto-generated constructor stub
 		frame= new JFrame("Ôtiste");
@@ -79,6 +84,9 @@ public class VueImeubleTrans implements VueImeuble {
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	@Override
+	/**
+	 * permet de mettre à jour la vue
+	 */
 	public void miseAJour() {
 		// TODO Auto-generated method stub
 		for(int i = 0; i<this.slidList.size() && i<this.vues.size(); ++i){

@@ -10,6 +10,12 @@ import traitement.Ascenseur;
 public class VueDeplace implements VueAscenseur {
 	private Ascenseur ascen;
 	private JFrame frame;
+
+	/**
+	 * constructeur de la vue qui permet le déplacement de l'ascenseur
+	 * @param asc ascenseur
+	 * @param nom nom de l'ascenseur
+	 */
 	public VueDeplace(Ascenseur asc, String nom) {
 		// TODO Auto-generated constructor stub
 		this.ascen= asc;
@@ -18,6 +24,9 @@ public class VueDeplace implements VueAscenseur {
 		bplus.addActionListener(new ActionListener() {
 			
 			@Override
+			/**
+			 * permet de gérer les actions suite au différents bouton, ici pour monter
+			 */
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				ascen.monter();
@@ -27,7 +36,10 @@ public class VueDeplace implements VueAscenseur {
 		});
 		JButton bmoin = new JButton("moins");
 		bmoin.addActionListener(new ActionListener() {
-			
+			/**
+			 * permet de gérer les actions suite au différents boutons, ici pour descendre
+			 * @param e
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub

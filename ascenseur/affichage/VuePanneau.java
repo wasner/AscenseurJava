@@ -28,6 +28,12 @@ public class VuePanneau implements VueAscenseur {
 	private JScrollPane scrollliste;
 	private JLabel jlEtat;
 	private JPanel jpane;
+
+	/**
+	 * Constructeur de la vue du panneau (c'est en faite l'intérieure de l'ascenseur)
+	 * @param ascenseur l'ascenseur sur le qu'elle on agit
+	 * @param nom nom de l'ascenseur
+	 */
 	public VuePanneau(Ascenseur ascenseur, final String nom) {
 		// TODO Auto-generated constructor stub
 		this.panel= new JPanel();

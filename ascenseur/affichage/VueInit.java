@@ -30,6 +30,9 @@ import traitement.Controleur;
 import traitement.Etage;
 import traitement.Immeuble;
 
+/**
+ * Classe de la vue initiale
+ */
 public class VueInit implements VueImeuble {
 
 	private Immeuble immeuble;
@@ -61,9 +64,12 @@ public class VueInit implements VueImeuble {
 	private JList list;
 	private String[] data; 
 	List<Ascenseur> ascenseurs;
-	
-	
-	
+
+
+	/**
+	 * Constructeur de la première fenêtre permettant d'ajouter des ascenseurs, des étages et de modifier les caractéristiques de chaque ascenseurs
+	 * @param immeublee
+	 */
 	public VueInit(Immeuble immeublee)
 	{
 		this.immeuble = immeublee;
@@ -84,7 +90,7 @@ public class VueInit implements VueImeuble {
 		//Layout et Fenetre
 		
 			this.frame = new JFrame();
-			this.frame.setTitle("�tiste");
+			this.frame.setTitle("Otiste");
 			this.frame.setResizable(false);
 			
 			this.numEtageMaxBox = Box.createHorizontalBox();
@@ -104,7 +110,7 @@ public class VueInit implements VueImeuble {
 			Font font = new Font("Arial",Font.BOLD,15);
 			Font fontTitre = new Font("Arial",Font.BOLD,35);
 			
-			this.titre = new JLabel("�tiste Company");
+			this.titre = new JLabel("Otiste Company");
 			this.titre.setPreferredSize(new Dimension(400, 60));
 			
 			this.titre.setFont(fontTitre);
@@ -350,6 +356,9 @@ public class VueInit implements VueImeuble {
 	}
 	
 	@Override
+	/**
+	 * permet de mettre à jour la vue
+	 */
 	public void miseAJour() {
 		// TODO Auto-generated method stub
 		data = new String[Constante.getNbAscenceur()];

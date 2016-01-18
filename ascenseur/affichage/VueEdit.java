@@ -60,7 +60,12 @@ public class VueEdit implements VueAscenseur {
 	
 	private JButton remove;
 	private JButton appliquer;
-	
+
+	/**
+	 * permet de modifier la vue pour un ascenseur
+	 * @param ascenseure l'ascenseur en question
+	 * @param vuess la liste des vues de l'immeuble
+	 */
 	public VueEdit(Ascenseur ascenseure, List<VueImeuble> vuess)
 	{
 		this.ascenseur = ascenseure;
@@ -70,7 +75,7 @@ public class VueEdit implements VueAscenseur {
 		this.etages = new LinkedList<Etage>();
 		
 		this.frame = new JFrame();
-		this.frame.setTitle("�tiste");
+		this.frame.setTitle("Otiste");
 		this.frame.setResizable(false);
 		this.frame.setLayout(new BorderLayout());
 		

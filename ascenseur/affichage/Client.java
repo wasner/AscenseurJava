@@ -1,5 +1,3 @@
-package affichage;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +7,9 @@ import traitement.Controleur;
 import traitement.Etage;
 import traitement.Immeuble;
 
+/**
+ * Classe contenant l'application (main)
+ */
 public class Client {
 
 	public static void main(String[] args){

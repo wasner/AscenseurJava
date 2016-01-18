@@ -15,6 +15,11 @@ public class VueImmeubleEtge implements VueImeuble {
 	private JFrame frame;
 	private List<JButton> jb;
 	private Immeuble im;
+
+	/**
+	 * Constructeur de la vue des étages de l'immeuble
+	 * @param ime l'immeuble en question
+	 */
 	public VueImmeubleEtge(Immeuble ime) {
 		// TODO Auto-generated constructor stub
 		this.frame = new JFrame("Etages");
