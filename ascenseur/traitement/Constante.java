@@ -1,3 +1,5 @@
+package traitement;
+
 public abstract class Constante {
 
     private static final int nbAscenceurMax = 10;
@@ -10,4 +12,9 @@ public abstract class Constante {
     public static final int getNbAscenceur() {
         return nbAscenceurMax;
     }
+
+	public static int getNumEtageMin() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
