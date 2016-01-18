@@ -1,3 +1,5 @@
+package traitement;
+
 public class Etage {
 
 	private Integer numEtage;
@@ -14,7 +16,11 @@ public class Etage {
     	return numEtage.compareTo(etageCourant.getNumEtage());
     }
 
-	public void setNumEtage(Integer numEtage) {
-		this.numEtage = numEtage;
+	public void setNumEtage(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+	public String toString(){
+		return Integer.toString(numEtage);
 	}
 }
