@@ -180,11 +180,12 @@ public class Ascenseur {
 	    public void triAppel() {
 	        //Fonction triant les appels en attente
 	        //remplissage d'un tableau avec les destinations des appels
-	        for(Requete re : this.requetes)
+	        /*for(Requete re : this.requetes)
 	            //this.requetes.add(Requete.getRequeteEtage());
 	            if(re.getRequeteEtage().compareEtage(this.getEtageCourant())!=0) //Si l'ï¿½tage ou se trouve l'ascenceur n'est pas l'ï¿½tage ou il y a une requï¿½te
 	                this.requetes.add(re);//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
-
+	                //Je ne pense pas que ce soit nécessaire d'ajouter les requêtes dans la liste sachant qu'ils y sont déjà
+		*/
 	        //Algorithme de tri du precedent tableau
 			Collections.sort(this.requetes,comp1); //On trie les requï¿½tes
 	    }
