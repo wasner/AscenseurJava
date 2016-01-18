@@ -1,14 +1,14 @@
 import java.util.LinkedList;
 import java.util.List;
 
-import ascenseur.affichage.VueImmeuble;
+//import ascenseur.affichage.VueImmeuble;
 
 public class Immeuble {
 	
 	private String nom;
 	private List<Etage> etages;
 	private List<Ascenseur> ascenseurs;
-	private List<VueImmeuble> vueImmeuble;
+	//private List<VueImmeuble> vueImmeuble;
 	
 	
 	public Immeuble(String nom, List<Etage> etages,

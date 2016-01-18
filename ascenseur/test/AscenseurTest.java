@@ -32,14 +32,22 @@ public class AscenseurTest {
 
         Etage etageCourant = new Etage(5);
         ascenseur1.setEtageCourant(etageCourant);
+        List<Requete> requete = new LinkedList<Requete>();
+        requete.add(new RequeteExterne("montant", etages.get(5)));
+        requete.add(new RequeteExterne("descendant", etages.get(9)));
+        requete.add(new RequeteExterne("montant", etages.get(2)));
+        requete.add(new RequeteExterne("descendant", etages.get(6)));
+
+        ascenseur1.setRequetes(requete);
+        ascenseur1.setEtat("descendant");
 
 
-        ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(1)));
-        ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(8)));
+        /*ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(1)));
+        ascenseur1.ajouterRequete(hnew RequeteExterne("montant",etages.get(8)));
         ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(9)));
         ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(5)));
         ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(4)));
-        ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(6)));
+        ascenseur1.ajouterRequete(new RequeteExterne("montant",etages.get(6)));*/
 
         List<Requete> requetes = ascenseur1.getRequetes();
 
@@ -58,7 +66,8 @@ public class AscenseurTest {
         {
             System.out.println( req.getEtage().getNumEtage());
         }
-        ascenseur1.triAppel();
+        //ascenseur1.triAppel();
+        ascenseur1.trieRequete();
         System.out.println("Liste des requêtes triés :");
         //System.out.println(requetes.get(1).getEtage().getNumEtage());
         for(Requete req: requetes)

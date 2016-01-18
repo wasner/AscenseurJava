@@ -234,6 +234,14 @@ public class Ascenseur {
             return 0;
         }
     };
+    public void trieRequete(){
+        Vector<Integer> etageDest = null;
+        for(Requete re : requetes)
+        {
+            etageDest.add(re.getEtage().getNumEtage());
+        }
+
+    }
 
 
         public void triAppel() {
@@ -245,6 +253,6 @@ public class Ascenseur {
 	                this.requetes.add(re);//On ajoute l'ï¿½tage ou il y a une requï¿½te dans la file d'attente
 
 	        *///Algorithme de tri du precedent tableau
-			Collections.sort(this.requetes, comparateurIntelligent); //On trie les requï¿½tes
+			Collections.sort(this.requetes, comparateurClassique); //On trie les requï¿½tes
 	    }
 }
