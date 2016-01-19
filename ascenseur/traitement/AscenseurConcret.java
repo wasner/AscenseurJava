@@ -311,7 +311,7 @@ public class AscenseurConcret implements Ascenseur{
 						return -1;
 				else if (o1.getEtage().getNumEtage()>o2.getEtage().getNumEtage())//Sinon si l'étage de la première requête est au dessus de la deuxième, alors on laisse comme c'était
 					return 1;
-				else if(o1.getEtage().getNumEtage()==o2.getEtage().getNumEtage()) //Si les deux requêtes ont comme destination les mêmes étages alors on les laisse tel quel
+				else if(o1.getEtage().getNumEtage()==o2.getEtage().getNumEtage()) //on supprime la requete
 					return 0;
 					
 				}
@@ -320,7 +320,7 @@ public class AscenseurConcret implements Ascenseur{
 						return 1;
 					else if (o1.getEtage().getNumEtage()>o2.getEtage().getNumEtage())//Si l'étage de la première requête est au dessus de l'étage de la deuxième alors on change l'ordre
 						return -1;
-					else if(o1.getEtage().getNumEtage()==o2.getEtage().getNumEtage()) //Si les deux étages sont pareil alors on ne touche rien
+					else if(o1.getEtage().getNumEtage()==o2.getEtage().getNumEtage()) //Si les deux étages sont pareil alors on supprime la requête
 						return 0;	
 				}
 				return 1;
