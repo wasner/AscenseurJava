@@ -326,10 +326,10 @@ public class AscenseurConcret implements Ascenseur{
 				return 1;
 			}
 		});
-        reqtri.addAll(requetes); //On replace toutes les requêtes triées dans la liste des requêtes triées
+        reqtri.addAll(requetes); //On place toutes les requêtes trié dans le treeSet pour éliminer les doublons
         requetes =new LinkedList<Requete>(); //On créer une linkedlist de requête (c'est la liste qui va contenir les requêtes pour un ascenseur
         for(Requete re :reqtri){
-        	requetes.add(re);//On ajoute dans l'ordre triée les différentes requêtes assigner à un ascenseur.
+        	requetes.add(re);//On ajoute dans la donnée membre, qui est une linkedlist, les requêtes triées
         }
         
     }
